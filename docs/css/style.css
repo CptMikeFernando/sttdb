@@ -14,31 +14,3 @@ display: flex;
 margin-top: 100px;
 justify-content: center;
 }
-
-.music-box{
-  position:fixed;
-  left:0;
-  right:0;
-  top:0;
-  bottom:0;
-  transition:all .3s;
-  &.playing{
-  }
-  audio{
-    display:none;
-  }
-  .btn{
-    background:purple;
-    padding:20px;
-    margin:100px auto 50px;
-    display:block;
-    cursor:pointer;
-    border:none;
-    border-radius:10px 0px;
-    transition:all .3s;
-    .fa{
-      font-size:40px;
-      color:yellow;
-    }
-  }
-}
