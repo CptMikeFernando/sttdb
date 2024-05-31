@@ -14,22 +14,3 @@ display: flex;
 margin-top: 100px;
 justify-content: center;
 }
-
-button {
-  margin: auto;
-  width: 20%;
-  height: auto;
-  padding: 20px;
-  font-family: 'Arial', sans-serif; 
-  color: #33475b; 
-}
-
-button {
-display: flex;
-margin-top: 20px;
-justify-content: center;
-}
-
-#success {
-  background: lightgreen;
-}
