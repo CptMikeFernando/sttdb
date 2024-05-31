@@ -1,19 +1,19 @@
-var audio = document.getElementById('audio');
-var isPlaying = false;
+"use strict";
 
-$('.btn-play-music').click(function(){
-    $(this).toggleClass('pause');
-    $(this).parent('.music-box').toggleClass('playing');
-    $(this).find('.fa').toggleClass('fa-pause');
-    if (isPlaying) {
-      audio.pause()
-    } else {
-      audio.play();
-    }
+const playBtn = document.querySelector(".visually-hidden");
+const label = document.querySelector(".label");
+const audio = document.querySelector(".audio");
+
+playBtn.addEventListener("click", function (e) {
+	if (e.target.checked) {
+		audio.play();
+		label.innerHTML = "pause";
+		label.classList.remove("move");
+		label.classList.add("back");
+	} else {
+		audio.pause();
+		label.innerHTML = "play";
+		label.classList.add("move");
+		label.classList.remove("back");
+	}
 });
-audio.onplaying = function() {
-  isPlaying = true;
-};
-audio.onpause = function() {
-  isPlaying = false;
-};
