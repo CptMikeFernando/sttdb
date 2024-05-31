@@ -11,15 +11,21 @@
 <div>
 
 <img width="400" <img src="img/sttdb.jpg" alt="STTDB">
-<script src="js/script.js"></script>
+
+<script>
+      function play() {
+        var audio = document.getElementById("audio");
+        audio.play();
+      }
+    </script>
   
 </div>
   
  <div class="container">
-	<audio id="audio" src="https://github.com/CptMikeFernando/sttdb/raw/master/docs/neck.mp3"></audio>
 	<button class="button">
 		<span class="arrow"></span>
 		<input type="checkbox" id="toggle" class="visually-hidden" />
+	<audio id="audio" src="https://github.com/CptMikeFernando/sttdb/raw/master/docs/neck.mp3"></audio>
 	</button>
 
 </div>
