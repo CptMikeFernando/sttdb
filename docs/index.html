@@ -22,11 +22,13 @@
 </div>
 
 <script>
-    var audio = new Audio('https://github.com/CptMikeFernando/sttdb/raw/master/docs/audio/neck.mp3?raw=true');
-    audio.play();
-</script>
-
-<audio class="audio" src="https://res.cloudinary.com/dfzwpskfk/video/upload/v1717182959/neck_ak96pb.mp3"></audio>
+      function play() {
+        var audio = document.getElementById("audio");
+        audio.play();
+      }
+    </script>
+	
+    <audio id="audio" src="https://res.cloudinary.com/dfzwpskfk/video/upload/v1717182959/neck_ak96pb.mp3"></audio>
 
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
