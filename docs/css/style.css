@@ -72,14 +72,14 @@ select {
 	gap: 1.65rem;
 	cursor: pointer;
 	border-radius: 3rem;
-	padding: 1rem 10rem;
-  background-color: #3a393b;
+	padding: 1rem 1rem;
+	background-color: #3a393b;
 	color: #fff;
 	border: none;
 	align-items: center;
 	font-size: 1.8rem;
 	font-weight: 600;
-	min-width: 15rem;
+	min-width: 4rem;
 	justify-content: center;
 }
 
