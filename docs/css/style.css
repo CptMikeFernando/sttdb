@@ -14,3 +14,5 @@ display: flex;
 margin-top: 10px;
 justify-content: center;
 }
+
+audio { width: 350px; }
