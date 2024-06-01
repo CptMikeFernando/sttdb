@@ -11,9 +11,10 @@ body {
 
 h1 {
     text-align: center;
-    color: #461D7C;
+    color: #fdd023;
     font-size: 50px;
     margin-top: 0px;
+    font-weight: 900;
 }
 
 div {
