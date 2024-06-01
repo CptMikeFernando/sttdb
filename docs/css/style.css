@@ -9,17 +9,17 @@ body {
 
 /* Centered Image Code */
 
-div {
-display: flex;
-margin-top: 10px;
-justify-content: center;
-}
-
 h1 {
     text-align: center;
     color: #A020F0;
     font-size: 40px;
     margin-top: 10px;
+}
+
+div {
+display: flex;
+margin-top: 10px;
+justify-content: center;
 }
 
 audio { width: 350px; }
