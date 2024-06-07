@@ -23,3 +23,49 @@ justify-content: center;
 }
 
 audio { width: 350px; height: 100px; }
+
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+  padding: 100px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Centered Image Code */
+
+h1 {
+    text-align: center;
+    color:  #FDD023;
+    font-size: 50px;
+    margin-top: 0px;
+    font-weight: 900;
+    height: 35px;
+}
+
+div {
+display: flex;
+margin-top: 0px;
+justify-content: center;
+}
+
+audio { width: 350px; height: 75px; }
+
+.tombollink3 {
+  display: inline-block;
+  text-align:center;
+  transition: all .3s linear;
+  border-radius:0px;
+      width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+  color:  #FDD023;
+  font-size:2rem;
+  margin:3px}
+
+a.tombollink3:hover{
+}
+body {background:#FDD023;;text-align:center}
