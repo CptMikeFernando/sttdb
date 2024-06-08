@@ -1,6 +1,6 @@
 body {
   margin: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   max-width: 100%;
   height: auto;
   padding: 100px;
