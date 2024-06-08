@@ -1,4 +1,5 @@
 body {
+  overflow-x: hidden;
   overflow: hidden;
   margin: auto;
   max-width: 100%;
