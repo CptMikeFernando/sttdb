@@ -1,6 +1,6 @@
 body {
-  margin: auto;
   overflow: hidden;
+  margin: auto;
   max-width: 100%;
   height: auto;
   padding: 100px;
@@ -8,56 +8,6 @@ body {
 }
 
 /* Centered Image Code */
-
-header {
-    color:  #FFF;
-    vertical-align: top;
-    margin-top: 0px;
-    font-size: 30px;
-    font-weight: 900;
-}
-
-#scroll-text {
-  height: 0%;
-  padding: 10px;
-  position: relative;
-  margin: auto;
-  text-align: center;
-  
-  /* animation properties */
-  -moz-transform: translateX(100%);
-  -webkit-transform: translateX(100%);
-  transform: translateX(100%);
-  
-  -moz-animation: my-animation 7s linear infinite;
-  -webkit-animation: my-animation 7s linear infinite;
-  animation: my-animation 7s linear infinite;
-}
-
-/* for Firefox */
-@-moz-keyframes my-animation {
-  from { -moz-transform: translateX(100%); }
-  to { -moz-transform: translateX(-100%); }
-}
-
-/* for Chrome */
-@-webkit-keyframes my-animation {
-  from { -webkit-transform: translateX(100%); }
-  to { -webkit-transform: translateX(-100%); }
-}
-
-@keyframes my-animation {
-  from {
-    -moz-transform: translateX(100%);
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
-  }
-  to {
-    -moz-transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
-  }
-}
 
 h1 {
     text-align: center;
@@ -82,11 +32,9 @@ body {
   margin: auto;
   max-width: 100%;
   height: auto;
-  padding: 50px;
+  padding: 100px;
   font-family: 'Arial', sans-serif;
 }
-
-/* Centered Image Code */
 
 h1 {
     text-align: center;
