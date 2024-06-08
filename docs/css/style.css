@@ -18,6 +18,7 @@ h1 {
 }
 
 div {
+overflow: hidden;
 display: flex;
 margin-top: 0px;
 justify-content: center;
