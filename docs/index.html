@@ -22,15 +22,6 @@
     <img src="img/tiger-head.png" alt="Tiger" class="nav-tiger-img">
     <img src="img/sttdb-logo.png" alt="STTDB" class="nav-logo-img">
   </div>
-  <div class="nav-audio-wrapper">
-    <button class="nav-play-btn" id="playBtn" onclick="togglePlay()">
-      <span class="play-icon">&#9654;</span>
-    </button>
-    <input type="range" id="progressBar" class="nav-progress-bar" value="0" min="0" max="100">
-    <audio id="mainAudio" preload="auto" loop>
-      <source src="https://raw.githubusercontent.com/CptMikeFernando/sttdb/master/docs/neck.mp3" type="audio/mpeg" />
-    </audio>
-  </div>
   <ul class="nav-links">
     <li><a href="/" class="nav-link active">Home</a></li>
     <li><a href="#news" class="nav-link" onclick="scrollToNews(event)">News</a></li>
@@ -53,8 +44,23 @@
 
 <!-- Main Content -->
 <div class="main-content">
+  
+<div>
+  <img width="400" height="400" src="img/chillinmikecigar2.png" alt="STTDB">
+</div>
+ 
+<div class="container">
+  <div class="audio-wrapper">
+    <button class="play-btn" id="playBtn" onclick="togglePlay()">
+      <span class="play-icon">&#9654;</span>
+    </button>
+    <input type="range" id="progressBar" class="progress-bar" value="0" min="0" max="100">
+    <audio id="mainAudio" preload="auto" loop>
+      <source src="https://raw.githubusercontent.com/CptMikeFernando/sttdb/master/docs/neck.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
 
-<script>
+  <script>
     const audio = document.getElementById('mainAudio');
     const playBtn = document.getElementById('playBtn');
     const playIcon = playBtn.querySelector('.play-icon');
