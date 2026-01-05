@@ -24,10 +24,21 @@ body {
 
 h1 {
   text-align: center;
-  color: #FDD023;
-  font-size: 50px;
+  color: #461D7C;
+  font-size: 60px;
   font-weight: 900;
   margin-bottom: 10px;
+  font-family: 'Impact', 'Arial Black', 'Helvetica Neue', sans-serif;
+  letter-spacing: 8px;
+  -webkit-text-stroke: 3px #FDD023;
+  text-shadow: 
+    3px 3px 0 #FDD023,
+    -1px -1px 0 #FDD023,
+    1px -1px 0 #FDD023,
+    -1px 1px 0 #FDD023,
+    1px 1px 0 #FDD023,
+    4px 4px 0 rgba(0,0,0,0.3);
+  paint-order: stroke fill;
 }
 
 div {
@@ -468,7 +479,9 @@ a.tombollink3:hover {
   }
   
   h1 {
-    font-size: 36px;
+    font-size: 42px;
+    letter-spacing: 6px;
+    -webkit-text-stroke: 2px #FDD023;
   }
   
   img {
