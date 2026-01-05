@@ -246,7 +246,7 @@ a.tombollink3:hover {
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
-  background: linear-gradient(90deg, #1a0a30 0%, #2d1150 50%, #1a0a30 100%);
+  background: #ffffff;
   border-bottom: 3px solid #FDD023;
   overflow-x: auto !important;
   overflow-y: hidden !important;
@@ -284,14 +284,14 @@ a.tombollink3:hover {
 .ticker-item {
   display: inline-block;
   padding: 0 40px;
-  color: #FDD023;
+  color: #461D7C;
   font-family: 'Poppins', Arial, sans-serif;
   font-size: 20px;
   font-weight: 600;
 }
 
 .game-status {
-  color: #ffffff;
+  color: #666666;
   font-weight: 400;
   font-size: 14px;
 }
