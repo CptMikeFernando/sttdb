@@ -95,12 +95,12 @@ async function loadAllScores() {
   allGames.push(...footballGames, ...basketballGames, ...baseballGames);
   
   if (allGames.length === 0) {
-    tickerContent.innerHTML = '<span class="ticker-item">No SEC games scheduled today</span>';
+    tickerContent.innerHTML = '<span class="ticker-item">No SEC games scheduled today</span><span class="ticker-item">No SEC games scheduled today</span>';
     return;
   }
   
   const tickerHTML = allGames.map(createTickerItem).join('');
-  tickerContent.innerHTML = tickerHTML + tickerHTML;
+  tickerContent.innerHTML = tickerHTML + tickerHTML + tickerHTML;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
