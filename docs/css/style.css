@@ -25,12 +25,9 @@ body {
 h1 {
   text-align: center;
   color: #FDD023;
-  font-size: 65px;
+  font-size: 50px;
   font-weight: 900;
   margin-bottom: 10px;
-  font-family: 'Oswald', 'Impact', 'Arial Black', sans-serif;
-  letter-spacing: 12px;
-  text-transform: uppercase;
 }
 
 div {
@@ -471,8 +468,7 @@ a.tombollink3:hover {
   }
   
   h1 {
-    font-size: 38px;
-    letter-spacing: 8px;
+    font-size: 36px;
   }
   
   img {
