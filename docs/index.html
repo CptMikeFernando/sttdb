@@ -16,6 +16,20 @@
 </head>
 <body>
 
+<!-- Navigation Header -->
+<nav class="main-nav">
+  <div class="nav-logo">STTDB</div>
+  <ul class="nav-links">
+    <li><a href="#" class="nav-link active">Home</a></li>
+    <li><a href="https://www.tigerdroppings.com/rant/lsu-sports/" target="_blank" class="nav-link">Forums</a></li>
+    <li><a href="https://www.tigerdroppings.com" target="_blank" class="nav-link">Death Valley After Dark</a></li>
+    <li><a href="#" class="nav-link">Merch</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle menu">
+    <i class="fa fa-bars"></i>
+  </button>
+</nav>
+
 <!-- Sports Ticker Carousel -->
 <div class="sports-ticker">
   <div class="ticker-track" id="ticker-content">
@@ -50,15 +64,6 @@ document.addEventListener('touchstart', function wakeUp() {
 
 <!-- Main Content -->
 <div class="main-content">
-  
-<div class="header-row">
-  <h1 class="sttdb-title">STTDB</h1>
-  <a href="https://www.tigerdroppings.com" target="_blank" class="forum-button">
-    <span class="forum-text">Death Valley After Dark</span>
-    <i class="fa fa-comments forum-icon-mobile"></i>
-    <i class="fa fa-arrow-right"></i>
-  </a>
-</div>
   
 <div>
   <img width="400" height="400" src="img/chillinmikecigar2.png" alt="STTDB">
@@ -139,6 +144,12 @@ document.addEventListener('touchstart', function wakeUp() {
 
 <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'/>
 <script src="js/lsu-news.js"></script>
+
+<script>
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+  document.querySelector('.nav-links').classList.toggle('open');
+});
+</script>
   
 </body>
 </html>
