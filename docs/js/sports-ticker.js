@@ -1,8 +1,31 @@
-const ESPN_APIS = {
-  football: 'https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard',
-  basketball: 'https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard',
-  baseball: 'https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/scoreboard'
-};
+function getWeekDates() {
+  const today = new Date();
+  const pastWeek = new Date(today);
+  pastWeek.setDate(today.getDate() - 7);
+  const nextWeek = new Date(today);
+  nextWeek.setDate(today.getDate() + 7);
+  
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}${month}${day}`;
+  };
+  
+  return {
+    start: formatDate(pastWeek),
+    end: formatDate(nextWeek)
+  };
+}
+
+function getESPNUrls() {
+  const dates = getWeekDates();
+  return {
+    football: `https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=${dates.start}-${dates.end}`,
+    basketball: `https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=${dates.start}-${dates.end}`,
+    baseball: `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/scoreboard?dates=${dates.start}-${dates.end}`
+  };
+}
 
 const SEC_TEAMS = [
   'ALA', 'BAMA', 'Alabama',
@@ -86,16 +109,18 @@ async function loadAllScores() {
   
   const allGames = [];
   
+  const urls = getESPNUrls();
+  
   const [footballGames, basketballGames, baseballGames] = await Promise.all([
-    fetchScores('football', ESPN_APIS.football),
-    fetchScores('basketball', ESPN_APIS.basketball),
-    fetchScores('baseball', ESPN_APIS.baseball)
+    fetchScores('football', urls.football),
+    fetchScores('basketball', urls.basketball),
+    fetchScores('baseball', urls.baseball)
   ]);
   
   allGames.push(...footballGames, ...basketballGames, ...baseballGames);
   
   if (allGames.length === 0) {
-    tickerContent.innerHTML = '<span class="ticker-item">No SEC games scheduled today</span><span class="ticker-item">No SEC games scheduled today</span>';
+    tickerContent.innerHTML = '<span class="ticker-item">No SEC games this week</span><span class="ticker-item">No SEC games this week</span>';
     return;
   }
   
