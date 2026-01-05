@@ -247,7 +247,7 @@ a.tombollink3:hover {
   right: 0 !important;
   width: 100% !important;
   background: #ffffff;
-  border-bottom: 3px solid #FDD023;
+  border-bottom: none;
   overflow-x: auto !important;
   overflow-y: hidden !important;
   z-index: 9999 !important;
