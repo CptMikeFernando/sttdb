@@ -101,14 +101,14 @@ async function loadAllScores() {
   
   const tickerHTML = allGames.map(createTickerItem).join('');
   tickerContent.innerHTML = tickerHTML + tickerHTML + tickerHTML;
+  
+  // Reset animation to start from beginning
+  tickerContent.style.animation = 'none';
+  tickerContent.offsetHeight; // Trigger reflow
+  tickerContent.style.animation = 'scroll-right 180s linear infinite';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const tickerTrack = document.getElementById('ticker-content');
-  tickerTrack.style.animation = 'none';
-  tickerTrack.offsetHeight;
-  tickerTrack.style.animation = '';
-  
   loadAllScores();
   setInterval(loadAllScores, 60000);
 });
