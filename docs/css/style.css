@@ -514,6 +514,11 @@ a.tombollink3:hover {
 @media (max-width: 768px) {
   .main-nav {
     padding: 10px 15px;
+    top: 0 !important;
+  }
+  
+  .main-content > div:first-child img[src*="chillinmikecigar"] {
+    display: none !important;
   }
   
   .nav-logo {
@@ -609,4 +614,7 @@ a.tombollink3:hover {
     padding-top: 70px;
   }
   
+  .main-content > div:first-child {
+    display: none;
+  }
 }
