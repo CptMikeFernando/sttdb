@@ -148,14 +148,17 @@ async function loadAllScores() {
   const tickerContent = document.getElementById('ticker-content');
   if (!tickerContent) return;
   
+  // Ensure loading message is visible
+  if (tickerContent.textContent.includes('Loading') || tickerContent.innerHTML.trim() === '') {
+    tickerContent.innerHTML = '<span class="ticker-item">Loading scores...</span>';
+  }
+  
   // Show cached scores immediately while fetching fresh data
   const cached = getCachedScores();
   if (cached && tickerContent.textContent.includes('Loading')) {
     tickerContent.innerHTML = cached;
     applyTickerAnimation();
     scoresLoaded = true;
-  } else if (tickerContent.textContent.includes('Loading')) {
-    // No cache, keep loading message
   }
   
   const allGames = [];
