@@ -4,6 +4,30 @@ const ESPN_APIS = {
   baseball: 'https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/scoreboard'
 };
 
+const SEC_TEAMS = [
+  'ALA', 'BAMA', 'Alabama',
+  'ARK', 'Arkansas',
+  'AUB', 'Auburn',
+  'FLA', 'Florida',
+  'UGA', 'GA', 'Georgia',
+  'UK', 'Kentucky',
+  'LSU', 'Louisiana State',
+  'MISS', 'OLE MISS', 'Ole Miss', 'Mississippi',
+  'MSST', 'MSU', 'Miss St', 'Mississippi State',
+  'MIZZ', 'MIZ', 'Missouri',
+  'OKLA', 'OU', 'Oklahoma',
+  'SCAR', 'SC', 'South Carolina',
+  'TENN', 'UT', 'Tennessee',
+  'TEX', 'Texas',
+  'TXAM', 'TA&M', 'TAMU', 'Texas A&M',
+  'VAN', 'VANDY', 'Vanderbilt'
+];
+
+function isSECTeam(teamName) {
+  const upperName = teamName.toUpperCase();
+  return SEC_TEAMS.some(sec => upperName.includes(sec.toUpperCase()));
+}
+
 const SPORT_LABELS = {
   football: { icon: '\u{1F3C8}', name: 'CFB' },
   basketball: { icon: '\u{1F3C0}', name: 'CBB' },
@@ -30,16 +54,22 @@ function parseGames(data, sport) {
       const awayTeam = competition.competitors.find(c => c.homeAway === 'away');
       
       if (homeTeam && awayTeam) {
-        const status = competition.status.type.shortDetail;
-        games.push({
-          sport: sport,
-          sportLabel: SPORT_LABELS[sport],
-          away: awayTeam.team.abbreviation || awayTeam.team.shortDisplayName,
-          awayScore: awayTeam.score || '0',
-          home: homeTeam.team.abbreviation || homeTeam.team.shortDisplayName,
-          homeScore: homeTeam.score || '0',
-          status: status
-        });
+        const homeName = homeTeam.team.abbreviation || homeTeam.team.shortDisplayName || homeTeam.team.displayName;
+        const awayName = awayTeam.team.abbreviation || awayTeam.team.shortDisplayName || awayTeam.team.displayName;
+        
+        if (isSECTeam(homeName) || isSECTeam(awayName) || 
+            isSECTeam(homeTeam.team.displayName || '') || isSECTeam(awayTeam.team.displayName || '')) {
+          const status = competition.status.type.shortDetail;
+          games.push({
+            sport: sport,
+            sportLabel: SPORT_LABELS[sport],
+            away: awayName,
+            awayScore: awayTeam.score || '0',
+            home: homeName,
+            homeScore: homeTeam.score || '0',
+            status: status
+          });
+        }
       }
     });
   }
@@ -65,7 +95,7 @@ async function loadAllScores() {
   allGames.push(...footballGames, ...basketballGames, ...baseballGames);
   
   if (allGames.length === 0) {
-    tickerContent.innerHTML = '<span class="ticker-item">No games scheduled today</span>';
+    tickerContent.innerHTML = '<span class="ticker-item">No SEC games scheduled today</span>';
     return;
   }
   
