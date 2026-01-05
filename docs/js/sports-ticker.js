@@ -222,7 +222,7 @@ function tryLoadScores() {
   });
 }
 
-// Persistent retry loop - runs every 1.5 seconds until success
+// Persistent retry loop - runs every 500ms until success (faster for mobile)
 function startRetryLoop() {
   var retryInterval = setInterval(function() {
     var tickerContent = document.getElementById('ticker-content');
@@ -235,7 +235,21 @@ function startRetryLoop() {
       clearInterval(retryInterval);
       console.log('Retry loop stopped - scores loaded');
     }
-  }, 1500);
+  }, 500);
+  
+  // Also try with requestAnimationFrame for immediate mobile response
+  function rafRetry() {
+    if (!scoresLoaded) {
+      var tickerContent = document.getElementById('ticker-content');
+      if (tickerContent && tickerContent.textContent.includes('Loading')) {
+        tryLoadScores();
+      }
+      if (!scoresLoaded) {
+        setTimeout(function() { requestAnimationFrame(rafRetry); }, 300);
+      }
+    }
+  }
+  requestAnimationFrame(rafRetry);
 }
 
 // Multiple init strategies for mobile compatibility
@@ -256,10 +270,22 @@ function initScores() {
   }
 }
 
-// Strategy 1: Run immediately when script loads
-if (document.getElementById('ticker-content')) {
-  initScores();
-}
+// Strategy 0: Immediate inline execution for mobile
+(function() {
+  var el = document.getElementById('ticker-content');
+  if (el) {
+    initScores();
+  } else {
+    // Wait for element with polling
+    var poll = setInterval(function() {
+      var el = document.getElementById('ticker-content');
+      if (el) {
+        clearInterval(poll);
+        initScores();
+      }
+    }, 10);
+  }
+})();
 
 // Strategy 2: DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
