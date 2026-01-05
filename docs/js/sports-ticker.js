@@ -96,20 +96,17 @@ function parseGames(data, sport) {
       if (homeTeam && awayTeam) {
         const homeName = homeTeam.team.abbreviation || homeTeam.team.shortDisplayName || homeTeam.team.displayName;
         const awayName = awayTeam.team.abbreviation || awayTeam.team.shortDisplayName || awayTeam.team.displayName;
+        const status = competition.status.type.shortDetail;
         
-        if (isSECTeam(homeName) || isSECTeam(awayName) || 
-            isSECTeam(homeTeam.team.displayName || '') || isSECTeam(awayTeam.team.displayName || '')) {
-          const status = competition.status.type.shortDetail;
-          games.push({
-            sport: sport,
-            sportLabel: SPORT_LABELS[sport],
-            away: awayName,
-            awayScore: awayTeam.score || '0',
-            home: homeName,
-            homeScore: homeTeam.score || '0',
-            status: status
-          });
-        }
+        games.push({
+          sport: sport,
+          sportLabel: SPORT_LABELS[sport],
+          away: awayName,
+          awayScore: awayTeam.score || '0',
+          home: homeName,
+          homeScore: homeTeam.score || '0',
+          status: status
+        });
       }
     });
   }
