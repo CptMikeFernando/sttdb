@@ -18,7 +18,10 @@
 
 <!-- Navigation Header -->
 <nav class="main-nav">
-  <img src="img/sttdb-logo.png" alt="STTDB" class="nav-logo-img">
+  <div class="nav-logo-container">
+    <img src="img/tiger-head.png" alt="Tiger" class="nav-tiger-img">
+    <img src="img/sttdb-logo.png" alt="STTDB" class="nav-logo-img">
+  </div>
   <ul class="nav-links">
     <li><a href="/" class="nav-link active">Home</a></li>
     <li><a href="#news" class="nav-link" onclick="scrollToNews(event)">News</a></li>
@@ -38,30 +41,6 @@
   </div>
 </div>
 <script src="js/sports-ticker.js"></script>
-<script>
-// Reload scores when user returns to page (fixes mobile issue)
-document.addEventListener('visibilitychange', function() {
-  if (document.visibilityState === 'visible' && window.loadAllScores) {
-    window.loadAllScores();
-  }
-});
-// Also reload on focus (backup for older browsers)
-window.addEventListener('focus', function() {
-  if (window.loadAllScores) {
-    window.loadAllScores();
-  }
-});
-// Additional mobile touch to wake up
-document.addEventListener('touchstart', function wakeUp() {
-  if (window.loadAllScores) {
-    var el = document.getElementById('ticker-content');
-    if (el && el.textContent.includes('Loading')) {
-      window.loadAllScores();
-    }
-  }
-  document.removeEventListener('touchstart', wakeUp);
-}, { once: true });
-</script>
 
 <!-- Main Content -->
 <div class="main-content">
