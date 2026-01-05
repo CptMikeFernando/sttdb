@@ -119,3 +119,39 @@ a.tombollink3:hover {
     transform: translateX(-50%);
   }
 }
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 36px;
+  }
+  
+  img {
+    max-width: 280px;
+    height: auto;
+  }
+  
+  audio {
+    width: 280px;
+  }
+  
+  .tombollink3 {
+    width: 55px;
+    height: 55px;
+    line-height: 60px;
+    font-size: 2rem;
+  }
+  
+  .ticker-item {
+    font-size: 12px;
+    padding: 0 20px;
+  }
+  
+  .sport-label {
+    font-size: 10px;
+    padding: 2px 4px;
+  }
+  
+  .game-status {
+    font-size: 10px;
+  }
+}
