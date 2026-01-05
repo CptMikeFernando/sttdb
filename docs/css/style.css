@@ -255,8 +255,9 @@ a.tombollink3:hover {
 }
 
 .header-row .forum-button {
-  position: absolute;
-  right: 0;
+  position: fixed;
+  right: 20px;
+  top: 70px;
 }
 
 .forum-button {
@@ -414,7 +415,9 @@ a.tombollink3:hover {
   }
   
   .header-row .forum-button {
-    position: static;
+    position: fixed;
+    right: 10px;
+    top: 55px;
   }
   
   .forum-button {
