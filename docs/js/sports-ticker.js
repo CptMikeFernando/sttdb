@@ -199,62 +199,95 @@ function applyTickerAnimation() {
 
 // Track if scores loaded successfully
 var scoresLoaded = false;
+var loadAttempts = 0;
 
 // Expose globally for inline script fallback
 window.loadAllScores = loadAllScores;
 
-// Wrapper that tracks success
-async function loadScoresWithRetry() {
-  const tickerContent = document.getElementById('ticker-content');
-  if (!tickerContent) return;
-  
-  await loadAllScores();
-  
-  // Check if scores actually loaded (not still showing "Loading")
-  if (!tickerContent.textContent.includes('Loading')) {
-    scoresLoaded = true;
-  }
+// Direct load function
+function tryLoadScores() {
+  loadAttempts++;
+  console.log('Score load attempt #' + loadAttempts);
+  loadAllScores().then(function() {
+    var tickerContent = document.getElementById('ticker-content');
+    if (tickerContent && !tickerContent.textContent.includes('Loading')) {
+      scoresLoaded = true;
+      console.log('Scores loaded successfully');
+    }
+  }).catch(function(e) {
+    console.log('Load attempt failed:', e);
+  });
 }
 
-// Keep retrying until scores load - no limit
-function retryUntilLoaded() {
-  if (scoresLoaded) return;
-  
-  const tickerContent = document.getElementById('ticker-content');
-  if (tickerContent && tickerContent.textContent.includes('Loading')) {
-    loadScoresWithRetry();
-  } else if (tickerContent && !tickerContent.textContent.includes('Loading')) {
-    scoresLoaded = true;
-    return;
-  }
-  
-  // Keep trying every 2 seconds until success
-  setTimeout(retryUntilLoaded, 2000);
+// Persistent retry loop - runs every 1.5 seconds until success
+function startRetryLoop() {
+  var retryInterval = setInterval(function() {
+    var tickerContent = document.getElementById('ticker-content');
+    if (!tickerContent) return;
+    
+    if (tickerContent.textContent.includes('Loading')) {
+      tryLoadScores();
+    } else {
+      scoresLoaded = true;
+      clearInterval(retryInterval);
+      console.log('Retry loop stopped - scores loaded');
+    }
+  }, 1500);
 }
 
-// Ensure scores load as soon as possible
+// Multiple init strategies for mobile compatibility
 function initScores() {
-  const tickerContent = document.getElementById('ticker-content');
+  var tickerContent = document.getElementById('ticker-content');
   if (tickerContent) {
-    loadScoresWithRetry();
+    // Immediate first attempt
+    tryLoadScores();
+    
+    // Start persistent retry loop
+    startRetryLoop();
+    
+    // Regular refresh every 60 seconds
     setInterval(loadAllScores, 60000);
-    // Keep retrying until scores appear
-    setTimeout(retryUntilLoaded, 2000);
   } else {
-    setTimeout(initScores, 10);
+    // DOM not ready, try again
+    setTimeout(initScores, 50);
   }
 }
 
-// Start immediately
-initScores();
+// Strategy 1: Run immediately when script loads
+if (document.getElementById('ticker-content')) {
+  initScores();
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Fallback: ensure scores are loaded
-  const tickerContent = document.getElementById('ticker-content');
-  if (tickerContent && tickerContent.textContent.includes('Loading')) {
-    loadAllScores();
+// Strategy 2: DOM Content Loaded
+document.addEventListener('DOMContentLoaded', function() {
+  if (!scoresLoaded) {
+    initScores();
   }
-  
+});
+
+// Strategy 3: Window load (everything including images)
+window.addEventListener('load', function() {
+  if (!scoresLoaded) {
+    tryLoadScores();
+  }
+});
+
+// Strategy 4: Check when page becomes visible (mobile tab switching)
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'visible' && !scoresLoaded) {
+    tryLoadScores();
+  }
+});
+
+// Strategy 5: Focus event
+window.addEventListener('focus', function() {
+  if (!scoresLoaded) {
+    tryLoadScores();
+  }
+});
+
+// Drag scrolling functionality
+document.addEventListener('DOMContentLoaded', () => {
   // Enable drag scrolling on the ticker
   const ticker = document.querySelector('.sports-ticker');
   let isDown = false;
