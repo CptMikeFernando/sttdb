@@ -57,12 +57,26 @@ const SPORT_LABELS = {
   baseball: { icon: '\u26BE', name: 'CBASE' }
 };
 
-async function fetchScores(sport, url) {
+// Fetch with timeout for mobile reliability
+async function fetchWithTimeout(url, timeout = 8000) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
   try {
     const response = await fetch(url, { 
-      cache: 'no-cache',
-      priority: 'high'
+      signal: controller.signal,
+      cache: 'no-cache'
     });
+    clearTimeout(id);
+    return response;
+  } catch (error) {
+    clearTimeout(id);
+    throw error;
+  }
+}
+
+async function fetchScores(sport, url) {
+  try {
+    const response = await fetchWithTimeout(url, 8000);
     const data = await response.json();
     return parseGames(data, sport);
   } catch (error) {
@@ -106,13 +120,45 @@ function createTickerItem(game) {
   return `<span class="ticker-item"><span class="sport-label">${game.sportLabel.icon} ${game.sportLabel.name}</span> ${game.away} ${game.awayScore} - ${game.homeScore} ${game.home} <span class="game-status">(${game.status})</span></span>`;
 }
 
+// Cache scores in localStorage for instant display
+function getCachedScores() {
+  try {
+    const cached = localStorage.getItem('sttdb_scores');
+    if (cached) {
+      const data = JSON.parse(cached);
+      // Cache valid for 5 minutes
+      if (Date.now() - data.timestamp < 300000) {
+        return data.html;
+      }
+    }
+  } catch (e) {}
+  return null;
+}
+
+function setCachedScores(html) {
+  try {
+    localStorage.setItem('sttdb_scores', JSON.stringify({
+      html: html,
+      timestamp: Date.now()
+    }));
+  } catch (e) {}
+}
+
 async function loadAllScores() {
   const tickerContent = document.getElementById('ticker-content');
   if (!tickerContent) return;
-  tickerContent.innerHTML = '<span class="ticker-item">Loading scores...</span>';
+  
+  // Show cached scores immediately while fetching fresh data
+  const cached = getCachedScores();
+  if (cached && tickerContent.textContent.includes('Loading')) {
+    tickerContent.innerHTML = cached;
+    applyTickerAnimation();
+    scoresLoaded = true;
+  } else if (tickerContent.textContent.includes('Loading')) {
+    // No cache, keep loading message
+  }
   
   const allGames = [];
-  
   const urls = getESPNUrls();
   
   const [footballGames, basketballGames, baseballGames] = await Promise.all([
@@ -124,27 +170,38 @@ async function loadAllScores() {
   allGames.push(...footballGames, ...basketballGames, ...baseballGames);
   
   if (allGames.length === 0) {
-    tickerContent.innerHTML = '<span class="ticker-item">No SEC games this week</span><span class="ticker-item">No SEC games this week</span>';
+    const noGamesHTML = '<span class="ticker-item">No SEC games this week</span><span class="ticker-item">No SEC games this week</span>';
+    tickerContent.innerHTML = noGamesHTML;
     return;
   }
   
   const tickerHTML = allGames.map(createTickerItem).join('');
-  tickerContent.innerHTML = tickerHTML + tickerHTML + tickerHTML;
+  const fullHTML = tickerHTML + tickerHTML + tickerHTML;
+  tickerContent.innerHTML = fullHTML;
   
-  // Reset scroll position and animation to start from beginning
+  // Cache for next visit
+  setCachedScores(fullHTML);
+  
+  applyTickerAnimation();
+}
+
+function applyTickerAnimation() {
+  const tickerContent = document.getElementById('ticker-content');
   const ticker = document.querySelector('.sports-ticker');
+  if (!ticker || !tickerContent) return;
+  
   ticker.scrollLeft = 0;
   tickerContent.style.animation = 'none';
   tickerContent.style.transform = 'translateX(-33.33%)';
-  void tickerContent.offsetWidth; // Force reflow
+  void tickerContent.offsetWidth;
   tickerContent.style.animation = 'scroll-right 180s linear infinite';
 }
 
-// Expose globally for inline script fallback
-window.loadAllScores = loadAllScores;
-
 // Track if scores loaded successfully
 var scoresLoaded = false;
+
+// Expose globally for inline script fallback
+window.loadAllScores = loadAllScores;
 
 // Wrapper that tracks success
 async function loadScoresWithRetry() {
