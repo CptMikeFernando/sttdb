@@ -18,12 +18,21 @@ function getWeekDates() {
   };
 }
 
+function getTodayDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}${month}${day}`;
+}
+
 function getESPNUrls() {
   const dates = getWeekDates();
+  const today = getTodayDate();
   return {
     football: `https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=${dates.start}-${dates.end}`,
-    basketball: `https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=${dates.start}-${dates.end}`,
-    baseball: `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/scoreboard?dates=${dates.start}-${dates.end}`
+    basketball: `https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=${today}`,
+    baseball: `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/scoreboard?dates=${today}`
   };
 }
 
@@ -76,9 +85,12 @@ async function fetchWithTimeout(url, timeout = 8000) {
 
 async function fetchScores(sport, url) {
   try {
-    const response = await fetchWithTimeout(url, 8000);
+    console.log(`Fetching ${sport} from: ${url}`);
+    const response = await fetchWithTimeout(url, 15000);
     const data = await response.json();
-    return parseGames(data, sport);
+    const games = parseGames(data, sport);
+    console.log(`${sport} games found: ${games.length}`);
+    return games;
   } catch (error) {
     console.log(`Error fetching ${sport}:`, error);
     return [];
@@ -120,11 +132,11 @@ function createTickerItem(game) {
 // Cache scores in localStorage for instant display
 function getCachedScores() {
   try {
-    const cached = localStorage.getItem('sttdb_scores');
+    const cached = localStorage.getItem('sttdb_scores_v2');
     if (cached) {
       const data = JSON.parse(cached);
-      // Cache valid for 5 minutes
-      if (Date.now() - data.timestamp < 300000) {
+      // Cache valid for 2 minutes
+      if (Date.now() - data.timestamp < 120000) {
         return data.html;
       }
     }
@@ -134,7 +146,7 @@ function getCachedScores() {
 
 function setCachedScores(html) {
   try {
-    localStorage.setItem('sttdb_scores', JSON.stringify({
+    localStorage.setItem('sttdb_scores_v2', JSON.stringify({
       html: html,
       timestamp: Date.now()
     }));
@@ -167,10 +179,10 @@ async function loadAllScores() {
     fetchScores('baseball', urls.baseball)
   ]);
   
-  allGames.push(...footballGames, ...basketballGames, ...baseballGames);
+  allGames.push(...basketballGames, ...baseballGames, ...footballGames);
   
   if (allGames.length === 0) {
-    const noGamesHTML = '<span class="ticker-item">No SEC games this week</span><span class="ticker-item">No SEC games this week</span>';
+    const noGamesHTML = '<span class="ticker-item">No games available</span><span class="ticker-item">No games available</span>';
     tickerContent.innerHTML = noGamesHTML;
     return;
   }
