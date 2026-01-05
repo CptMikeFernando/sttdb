@@ -270,28 +270,52 @@ function initScores() {
   }
 }
 
-// Strategy 0: Immediate inline execution for mobile
+// Strategy 0: Immediate inline execution for mobile (Safari compatible)
 (function() {
-  var el = document.getElementById('ticker-content');
-  if (el) {
-    initScores();
-  } else {
-    // Wait for element with polling
-    var poll = setInterval(function() {
-      var el = document.getElementById('ticker-content');
-      if (el) {
+  function safariInit() {
+    var el = document.getElementById('ticker-content');
+    if (el) {
+      initScores();
+    } else {
+      // Wait for element with polling
+      var poll = setInterval(function() {
+        var el = document.getElementById('ticker-content');
+        if (el) {
+          clearInterval(poll);
+          initScores();
+        }
+      }, 10);
+      // Fallback timeout for Safari
+      setTimeout(function() {
         clearInterval(poll);
-        initScores();
-      }
-    }, 10);
+        var el = document.getElementById('ticker-content');
+        if (el && !scoresLoaded) initScores();
+      }, 100);
+    }
+  }
+  
+  // Safari needs readyState check
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', safariInit);
+  } else {
+    safariInit();
+  }
+  
+  // Extra Safari trigger on interactive state
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    setTimeout(safariInit, 0);
   }
 })();
 
-// Strategy 2: DOM Content Loaded
+// Strategy 2: DOM Content Loaded (Safari priority)
 document.addEventListener('DOMContentLoaded', function() {
   if (!scoresLoaded) {
     initScores();
   }
+  // Safari sometimes needs a tiny delay after DOMContentLoaded
+  setTimeout(function() {
+    if (!scoresLoaded) tryLoadScores();
+  }, 50);
 });
 
 // Strategy 3: Window load (everything including images)
@@ -299,6 +323,10 @@ window.addEventListener('load', function() {
   if (!scoresLoaded) {
     tryLoadScores();
   }
+  // Safari backup after full load
+  setTimeout(function() {
+    if (!scoresLoaded) tryLoadScores();
+  }, 100);
 });
 
 // Strategy 4: Check when page becomes visible (mobile tab switching)
