@@ -270,6 +270,14 @@ a.tombollink3:hover {
   margin-bottom: 0;
 }
 
+.sttdb-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  background-color: transparent;
+  mix-blend-mode: lighten;
+}
+
 .header-row .forum-button {
   position: fixed;
   right: 20px;
