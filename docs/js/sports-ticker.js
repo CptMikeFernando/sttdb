@@ -216,18 +216,20 @@ async function loadScoresWithRetry() {
   }
 }
 
-// Aggressive retry for first load on mobile
-function retryUntilLoaded(attempts) {
-  if (scoresLoaded || attempts <= 0) return;
+// Keep retrying until scores load - no limit
+function retryUntilLoaded() {
+  if (scoresLoaded) return;
   
   const tickerContent = document.getElementById('ticker-content');
   if (tickerContent && tickerContent.textContent.includes('Loading')) {
     loadScoresWithRetry();
+  } else if (tickerContent && !tickerContent.textContent.includes('Loading')) {
+    scoresLoaded = true;
+    return;
   }
   
-  setTimeout(function() {
-    retryUntilLoaded(attempts - 1);
-  }, 500);
+  // Keep trying every 2 seconds until success
+  setTimeout(retryUntilLoaded, 2000);
 }
 
 // Ensure scores load as soon as possible
@@ -236,8 +238,8 @@ function initScores() {
   if (tickerContent) {
     loadScoresWithRetry();
     setInterval(loadAllScores, 60000);
-    // Retry every 500ms for first 10 seconds if still loading
-    retryUntilLoaded(20);
+    // Keep retrying until scores appear
+    setTimeout(retryUntilLoaded, 2000);
   } else {
     setTimeout(initScores, 10);
   }
