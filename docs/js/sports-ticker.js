@@ -143,12 +143,44 @@ async function loadAllScores() {
 // Expose globally for inline script fallback
 window.loadAllScores = loadAllScores;
 
+// Track if scores loaded successfully
+var scoresLoaded = false;
+
+// Wrapper that tracks success
+async function loadScoresWithRetry() {
+  const tickerContent = document.getElementById('ticker-content');
+  if (!tickerContent) return;
+  
+  await loadAllScores();
+  
+  // Check if scores actually loaded (not still showing "Loading")
+  if (!tickerContent.textContent.includes('Loading')) {
+    scoresLoaded = true;
+  }
+}
+
+// Aggressive retry for first load on mobile
+function retryUntilLoaded(attempts) {
+  if (scoresLoaded || attempts <= 0) return;
+  
+  const tickerContent = document.getElementById('ticker-content');
+  if (tickerContent && tickerContent.textContent.includes('Loading')) {
+    loadScoresWithRetry();
+  }
+  
+  setTimeout(function() {
+    retryUntilLoaded(attempts - 1);
+  }, 500);
+}
+
 // Ensure scores load as soon as possible
 function initScores() {
   const tickerContent = document.getElementById('ticker-content');
   if (tickerContent) {
-    loadAllScores();
+    loadScoresWithRetry();
     setInterval(loadAllScores, 60000);
+    // Retry every 500ms for first 10 seconds if still loading
+    retryUntilLoaded(20);
   } else {
     setTimeout(initScores, 10);
   }
