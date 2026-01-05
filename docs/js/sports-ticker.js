@@ -339,6 +339,29 @@ window.addEventListener('load', function() {
 });
 
 
+// Prevent animation restart on tab switch
+document.addEventListener('DOMContentLoaded', () => {
+  const tickerTrack = document.querySelector('.ticker-track');
+  let savedTransform = null;
+  
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      // Save current position when leaving
+      const computedStyle = window.getComputedStyle(tickerTrack);
+      savedTransform = computedStyle.transform;
+      tickerTrack.style.animationPlayState = 'paused';
+    } else {
+      // Resume from saved position
+      if (savedTransform) {
+        tickerTrack.style.transform = savedTransform;
+        // Force reflow then resume
+        tickerTrack.offsetHeight;
+        tickerTrack.style.animationPlayState = 'running';
+      }
+    }
+  });
+});
+
 // Drag scrolling functionality
 document.addEventListener('DOMContentLoaded', () => {
   // Enable drag scrolling on the ticker
