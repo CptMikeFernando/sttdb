@@ -242,16 +242,21 @@ a.tombollink3:hover {
 
 /* Header Row */
 .header-row {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
   width: 100%;
   margin-bottom: 10px;
 }
 
 .header-row h1 {
   margin-bottom: 0;
+}
+
+.header-row .forum-button {
+  position: absolute;
+  right: 0;
 }
 
 .forum-button {
@@ -405,7 +410,11 @@ a.tombollink3:hover {
   
   .header-row {
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
+  }
+  
+  .header-row .forum-button {
+    position: static;
   }
   
   .forum-button {
