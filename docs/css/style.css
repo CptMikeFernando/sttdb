@@ -101,6 +101,16 @@ a.tombollink3:hover {
   font-size: 12px;
 }
 
+.sport-label {
+  background-color: #FDD023;
+  color: #461D7C;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
 @keyframes scroll-left {
   0% {
     transform: translateX(0);

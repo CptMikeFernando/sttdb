@@ -4,10 +4,10 @@ const ESPN_APIS = {
   baseball: 'https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/scoreboard'
 };
 
-const SPORT_ICONS = {
-  football: '\u{1F3C8}',
-  basketball: '\u{1F3C0}',
-  baseball: '\u26BE'
+const SPORT_LABELS = {
+  football: { icon: '\u{1F3C8}', name: 'CFB' },
+  basketball: { icon: '\u{1F3C0}', name: 'CBB' },
+  baseball: { icon: '\u26BE', name: 'CBASE' }
 };
 
 async function fetchScores(sport, url) {
@@ -33,7 +33,7 @@ function parseGames(data, sport) {
         const status = competition.status.type.shortDetail;
         games.push({
           sport: sport,
-          icon: SPORT_ICONS[sport],
+          sportLabel: SPORT_LABELS[sport],
           away: awayTeam.team.abbreviation || awayTeam.team.shortDisplayName,
           awayScore: awayTeam.score || '0',
           home: homeTeam.team.abbreviation || homeTeam.team.shortDisplayName,
@@ -47,7 +47,7 @@ function parseGames(data, sport) {
 }
 
 function createTickerItem(game) {
-  return `<span class="ticker-item">${game.icon} ${game.away} ${game.awayScore} - ${game.homeScore} ${game.home} <span class="game-status">(${game.status})</span></span>`;
+  return `<span class="ticker-item"><span class="sport-label">${game.sportLabel.icon} ${game.sportLabel.name}</span> ${game.away} ${game.awayScore} - ${game.homeScore} ${game.home} <span class="game-status">(${game.status})</span></span>`;
 }
 
 async function loadAllScores() {
