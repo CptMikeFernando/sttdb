@@ -69,22 +69,28 @@ a.tombollink3:hover {
 }
 
 .sports-ticker {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
   background: linear-gradient(90deg, #1a0a30 0%, #2d1150 50%, #1a0a30 100%);
   border-bottom: 2px solid #FDD023;
-  overflow: hidden;
-  z-index: 1000;
+  overflow: hidden !important;
+  z-index: 9999 !important;
   padding: 8px 0;
-  margin: 0;
+  margin: 0 !important;
+  display: block !important;
+  height: auto !important;
+  min-height: 36px;
 }
 
 .ticker-track {
-  display: flex;
-  white-space: nowrap;
+  display: inline-flex !important;
+  white-space: nowrap !important;
   animation: scroll-right 120s linear infinite;
+  justify-content: flex-start !important;
+  margin: 0 !important;
 }
 
 .ticker-item {
@@ -122,6 +128,10 @@ a.tombollink3:hover {
 }
 
 @media (max-width: 768px) {
+  body {
+    padding-top: 45px;
+  }
+  
   h1 {
     font-size: 36px;
   }
@@ -142,17 +152,24 @@ a.tombollink3:hover {
     font-size: 2rem;
   }
   
+  .sports-ticker {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 32px;
+  }
+  
   .ticker-item {
-    font-size: 12px;
-    padding: 0 20px;
+    font-size: 11px;
+    padding: 0 15px;
   }
   
   .sport-label {
-    font-size: 10px;
+    font-size: 9px;
     padding: 2px 4px;
   }
   
   .game-status {
-    font-size: 10px;
+    font-size: 9px;
   }
 }
