@@ -48,6 +48,25 @@ function createNewsCard(article) {
   `;
 }
 
+function createInFeedAd() {
+  return `
+    <div class="news-card in-feed-ad">
+      <div class="ad-label">Advertisement</div>
+      <div class="in-feed-ad-content">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-format="fluid"
+             data-ad-layout-key="-6t+ed+2i-1n-4w"
+             data-ad-client="ca-pub-2180098394455320"
+             data-ad-slot="INFEED_SLOT"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+    </div>
+  `;
+}
+
 async function loadLSUNews() {
   const newsContainer = document.getElementById('news-container');
   newsContainer.innerHTML = '<p class="loading-text">Loading LSU news...</p>';
@@ -59,7 +78,15 @@ async function loadLSUNews() {
     return;
   }
   
-  newsContainer.innerHTML = news.map(createNewsCard).join('');
+  let html = '';
+  news.forEach((article, index) => {
+    html += createNewsCard(article);
+    if (index === 2 || index === 6) {
+      html += createInFeedAd();
+    }
+  });
+  
+  newsContainer.innerHTML = html;
 }
 
 document.addEventListener('DOMContentLoaded', loadLSUNews);

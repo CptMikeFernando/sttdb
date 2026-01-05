@@ -378,6 +378,39 @@ a.tombollink3:hover {
   margin-top: 8px;
 }
 
+.in-feed-ad {
+  cursor: default;
+  background: rgba(253, 208, 35, 0.05);
+  border: 2px dashed rgba(253, 208, 35, 0.4);
+}
+
+.in-feed-ad:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.ad-label {
+  color: rgba(253, 208, 35, 0.6);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.in-feed-ad-content {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(253, 208, 35, 0.4);
+  font-size: 16px;
+}
+
+.in-feed-ad-content::before {
+  content: "Sponsored Content";
+}
+
 .news-content {
   padding: 0;
   display: flex;
