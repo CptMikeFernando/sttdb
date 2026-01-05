@@ -58,6 +58,33 @@ body {
   }
 }
 
+.top-banner-ad {
+  width: 728px;
+  height: 90px;
+  margin: 0 auto 20px auto;
+  background: rgba(253, 208, 35, 0.1);
+  border: 2px dashed rgba(253, 208, 35, 0.5);
+  border-radius: 8px;
+  display: none;
+}
+
+.top-banner-ad::before {
+  content: "AD - 728x90 Leaderboard";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: rgba(253, 208, 35, 0.5);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .top-banner-ad {
+    display: block;
+  }
+}
+
 h1 {
   text-align: center;
   color: #FDD023;
