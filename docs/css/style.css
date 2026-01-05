@@ -28,6 +28,20 @@ body {
   height: 600px;
   z-index: 100;
   display: none;
+  background: rgba(253, 208, 35, 0.1);
+  border: 2px dashed rgba(253, 208, 35, 0.5);
+  border-radius: 8px;
+}
+
+.sidebar-ad::before {
+  content: "AD";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: rgba(253, 208, 35, 0.5);
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .sidebar-left {
@@ -38,7 +52,7 @@ body {
   right: 10px;
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
   .sidebar-ad {
     display: block;
   }
