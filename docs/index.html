@@ -21,26 +21,30 @@
     <span class="ticker-item">Loading scores...</span>
   </div>
 </div>
+<script src="js/sports-ticker.js"></script>
 <script>
-// Inline early loader for mobile reliability
-(function() {
-  var loaded = false;
-  function earlyLoad() {
-    if (loaded) return;
+// Reload scores when user returns to page (fixes mobile issue)
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'visible' && window.loadAllScores) {
+    window.loadAllScores();
+  }
+});
+// Also reload on focus (backup for older browsers)
+window.addEventListener('focus', function() {
+  if (window.loadAllScores) {
+    window.loadAllScores();
+  }
+});
+// Additional mobile touch to wake up
+document.addEventListener('touchstart', function wakeUp() {
+  if (window.loadAllScores) {
     var el = document.getElementById('ticker-content');
-    if (el && window.loadAllScores) {
-      loaded = true;
+    if (el && el.textContent.includes('Loading')) {
       window.loadAllScores();
     }
   }
-  // Try multiple times
-  setTimeout(earlyLoad, 100);
-  setTimeout(earlyLoad, 300);
-  setTimeout(earlyLoad, 600);
-  setTimeout(earlyLoad, 1000);
-  document.addEventListener('DOMContentLoaded', earlyLoad);
-  window.addEventListener('load', earlyLoad);
-})();
+  document.removeEventListener('touchstart', wakeUp);
+}, { once: true });
 </script>
 
 <!-- Main Content -->
@@ -133,7 +137,6 @@
 </div>
 
 <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'/>
-<script src="js/sports-ticker.js"></script>
 <script src="js/lsu-news.js"></script>
   
 </body>
