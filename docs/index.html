@@ -21,6 +21,27 @@
     <span class="ticker-item">Loading scores...</span>
   </div>
 </div>
+<script>
+// Inline early loader for mobile reliability
+(function() {
+  var loaded = false;
+  function earlyLoad() {
+    if (loaded) return;
+    var el = document.getElementById('ticker-content');
+    if (el && window.loadAllScores) {
+      loaded = true;
+      window.loadAllScores();
+    }
+  }
+  // Try multiple times
+  setTimeout(earlyLoad, 100);
+  setTimeout(earlyLoad, 300);
+  setTimeout(earlyLoad, 600);
+  setTimeout(earlyLoad, 1000);
+  document.addEventListener('DOMContentLoaded', earlyLoad);
+  window.addEventListener('load', earlyLoad);
+})();
+</script>
 
 <!-- Main Content -->
 <div class="main-content">

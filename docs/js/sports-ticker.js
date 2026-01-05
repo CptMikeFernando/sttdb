@@ -108,6 +108,7 @@ function createTickerItem(game) {
 
 async function loadAllScores() {
   const tickerContent = document.getElementById('ticker-content');
+  if (!tickerContent) return;
   tickerContent.innerHTML = '<span class="ticker-item">Loading scores...</span>';
   
   const allGames = [];
@@ -139,6 +140,9 @@ async function loadAllScores() {
   tickerContent.style.animation = 'scroll-right 180s linear infinite';
 }
 
+// Expose globally for inline script fallback
+window.loadAllScores = loadAllScores;
+
 // Ensure scores load as soon as possible
 function initScores() {
   const tickerContent = document.getElementById('ticker-content');
@@ -146,7 +150,6 @@ function initScores() {
     loadAllScores();
     setInterval(loadAllScores, 60000);
   } else {
-    // DOM not ready yet, wait and try again
     setTimeout(initScores, 10);
   }
 }
