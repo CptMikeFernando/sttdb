@@ -174,6 +174,41 @@ a.tombollink3:hover {
   flex-shrink: 0;
 }
 
+.news-image-placeholder {
+  width: 120px;
+  min-height: 100px;
+  background: linear-gradient(135deg, #461D7C 0%, #2d1150 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.lsu-logo {
+  color: #FDD023;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.news-sport-badge {
+  display: inline-block;
+  background-color: #FDD023;
+  color: #461D7C;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.news-meta {
+  color: #ffffff;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
 .news-content {
   padding: 15px;
   display: flex;

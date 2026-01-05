@@ -1,4 +1,4 @@
-const LSU_RSS_FEED = 'https://api.rss2json.com/v1/api.json?rss_url=https://lsusports.net/feed&count=15';
+const LSU_RSS_FEED = 'https://api.rss2json.com/v1/api.json?rss_url=https://lsusports.net/feed';
 
 async function fetchLSUNews() {
   try {
@@ -24,30 +24,32 @@ function formatDate(dateString) {
   });
 }
 
-function extractImage(content) {
-  if (!content) return 'img/chillinmikecigar2.png';
-  const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
-  return imgMatch ? imgMatch[1] : 'img/chillinmikecigar2.png';
-}
-
-function stripHtml(html) {
-  if (!html) return '';
-  const tmp = document.createElement('div');
-  tmp.innerHTML = html;
-  return tmp.textContent || tmp.innerText || '';
+function getSportFromCategories(categories) {
+  if (!categories || categories.length === 0) return '';
+  const sports = ['Football', 'Basketball', 'Baseball', 'Gymnastics', 'Volleyball', 'Soccer', 'Track', 'Swimming', 'Golf', 'Tennis', 'Softball'];
+  for (const cat of categories) {
+    for (const sport of sports) {
+      if (cat.toLowerCase().includes(sport.toLowerCase())) {
+        return sport;
+      }
+    }
+  }
+  return '';
 }
 
 function createNewsCard(article) {
-  const imageUrl = article.thumbnail || article.enclosure?.link || extractImage(article.content);
-  const description = stripHtml(article.description || article.content || '').substring(0, 150);
+  const sport = getSportFromCategories(article.categories);
+  const sportBadge = sport ? `<span class="news-sport-badge">${sport}</span>` : '';
   
   return `
     <a href="${article.link || '#'}" target="_blank" class="news-card">
-      <div class="news-image" style="background-image: url('${imageUrl}')"></div>
+      <div class="news-image-placeholder">
+        <span class="lsu-logo">LSU</span>
+      </div>
       <div class="news-content">
+        ${sportBadge}
         <h3 class="news-title">${article.title}</h3>
-        <p class="news-description">${description}...</p>
-        <span class="news-date">${formatDate(article.pubDate)}</span>
+        <p class="news-meta">By ${article.author || 'LSU Athletics'} - ${formatDate(article.pubDate)}</p>
       </div>
     </a>
   `;
