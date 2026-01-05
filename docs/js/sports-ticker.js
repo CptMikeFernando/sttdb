@@ -139,11 +139,27 @@ async function loadAllScores() {
   tickerContent.style.animation = 'scroll-right 180s linear infinite';
 }
 
-// Start loading scores immediately when script loads
-loadAllScores();
-setInterval(loadAllScores, 60000);
+// Ensure scores load as soon as possible
+function initScores() {
+  const tickerContent = document.getElementById('ticker-content');
+  if (tickerContent) {
+    loadAllScores();
+    setInterval(loadAllScores, 60000);
+  } else {
+    // DOM not ready yet, wait and try again
+    setTimeout(initScores, 10);
+  }
+}
+
+// Start immediately
+initScores();
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Fallback: ensure scores are loaded
+  const tickerContent = document.getElementById('ticker-content');
+  if (tickerContent && tickerContent.textContent.includes('Loading')) {
+    loadAllScores();
+  }
   
   // Enable drag scrolling on the ticker
   const ticker = document.querySelector('.sports-ticker');
