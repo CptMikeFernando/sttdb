@@ -21,6 +21,7 @@
   <img src="img/sttdb-logo.png" alt="STTDB" class="nav-logo-img">
   <ul class="nav-links">
     <li><a href="/" class="nav-link active">Home</a></li>
+    <li><a href="#news" class="nav-link" onclick="scrollToNews(event)">News</a></li>
     <li><a href="https://www.tigerdroppings.com/rant/lsu-sports/" target="_blank" class="nav-link">Forums</a></li>
     <li><a href="https://www.tigerdroppings.com" target="_blank" class="nav-link">Death Valley After Dark</a></li>
     <li><a href="#" class="nav-link">Merch</a></li>
@@ -129,7 +130,7 @@ document.addEventListener('touchstart', function wakeUp() {
 </div>
 
 <!-- LSU News Section -->
-<section class="news-section">
+<section class="news-section" id="news">
   <div id="news-container" class="news-container">
     <p class="loading-text">Loading LSU news...</p>
   </div>
@@ -149,6 +150,18 @@ document.addEventListener('touchstart', function wakeUp() {
 document.querySelector('.nav-toggle').addEventListener('click', function() {
   document.querySelector('.nav-links').classList.toggle('open');
 });
+
+function scrollToNews(event) {
+  event.preventDefault();
+  var newsSection = document.getElementById('news');
+  var headerOffset = 130;
+  var elementPosition = newsSection.getBoundingClientRect().top;
+  var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: 'smooth'
+  });
+}
 </script>
   
 </body>
