@@ -71,11 +71,50 @@ audio::-webkit-media-controls-timeline {
 }
 
 .audio-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
   background: linear-gradient(135deg, #2d1150 0%, #461D7C 100%);
-  padding: 15px 25px;
+  padding: 15px 30px;
   border-radius: 40px;
   border: 2px solid rgba(253, 208, 35, 0.4);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.play-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #FDD023;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(253, 208, 35, 0.5);
+}
+
+.play-icon {
+  color: #461D7C;
+  font-size: 20px;
+  margin-left: 3px;
+}
+
+.audio-duration {
+  color: #FDD023;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#mainAudio {
+  display: none;
 }
 
 .tombollink3 {
