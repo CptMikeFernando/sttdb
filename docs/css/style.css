@@ -12,7 +12,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Arial', sans-serif;
-  padding: 20px;
+  padding: 50px 20px 20px 20px;
   text-align: center;
 }
 
@@ -66,4 +66,46 @@ a.tombollink3:hover {
   justify-content: center;
   gap: 10px;
   margin-top: 15px;
+}
+
+.sports-ticker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #1a0a30 0%, #2d1150 50%, #1a0a30 100%);
+  border-bottom: 2px solid #FDD023;
+  overflow: hidden;
+  z-index: 1000;
+  padding: 10px 0;
+}
+
+.ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll-left 60s linear infinite;
+}
+
+.ticker-item {
+  display: inline-block;
+  padding: 0 30px;
+  color: #FDD023;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.game-status {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
