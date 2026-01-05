@@ -102,9 +102,12 @@ async function loadAllScores() {
   const tickerHTML = allGames.map(createTickerItem).join('');
   tickerContent.innerHTML = tickerHTML + tickerHTML + tickerHTML;
   
-  // Reset animation to start from beginning
+  // Reset scroll position and animation to start from beginning
+  const ticker = document.querySelector('.sports-ticker');
+  ticker.scrollLeft = 0;
   tickerContent.style.animation = 'none';
-  tickerContent.offsetHeight; // Trigger reflow
+  tickerContent.style.transform = 'translateX(-33.33%)';
+  void tickerContent.offsetWidth; // Force reflow
   tickerContent.style.animation = 'scroll-right 180s linear infinite';
 }
 
