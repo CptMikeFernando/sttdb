@@ -535,7 +535,7 @@ a.tombollink3:hover {
   }
   
   .main-content {
-    padding-top: 120px;
+    padding-top: 140px;
   }
   
   .header-row {
@@ -620,7 +620,7 @@ a.tombollink3:hover {
   }
   
   .ticker-item {
-    font-size: 15px;
+    font-size: 18px;
     padding: 0 20px;
     display: inline !important;
     height: auto !important;
@@ -630,13 +630,13 @@ a.tombollink3:hover {
   }
   
   .sport-icon {
-    font-size: 16px;
+    font-size: 20px;
     margin-right: 6px;
     vertical-align: middle !important;
   }
   
   .game-status {
-    font-size: 12px;
+    font-size: 14px;
     vertical-align: middle !important;
   }
 }
