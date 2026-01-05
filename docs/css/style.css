@@ -270,12 +270,17 @@ a.tombollink3:hover {
   margin-bottom: 0;
 }
 
-.sttdb-logo {
-  height: 80px;
-  width: auto;
-  object-fit: contain;
-  background-color: transparent;
-  mix-blend-mode: lighten;
+.sttdb-title {
+  font-family: 'Teko', 'Impact', 'Arial Black', sans-serif;
+  font-size: 90px;
+  font-weight: 700;
+  font-style: italic;
+  color: #FDD023;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+  transform: skewX(-8deg);
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
 }
 
 .header-row .forum-button {
