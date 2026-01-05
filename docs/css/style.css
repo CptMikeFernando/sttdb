@@ -88,7 +88,7 @@ a.tombollink3:hover {
 .ticker-track {
   display: inline-block !important;
   white-space: nowrap !important;
-  animation: scroll-right 60s linear infinite;
+  animation: scroll-right 90s linear infinite;
   margin: 0 !important;
   padding-left: 0;
 }
@@ -120,10 +120,10 @@ a.tombollink3:hover {
 
 @keyframes scroll-right {
   0% {
-    transform: translateX(0);
+    transform: translateX(-33.33%);
   }
   100% {
-    transform: translateX(50%);
+    transform: translateX(0);
   }
 }
 
@@ -266,7 +266,7 @@ a.tombollink3:hover {
   .ticker-track {
     display: inline-block !important;
     white-space: nowrap !important;
-    animation: scroll-right 40s linear infinite !important;
+    animation: scroll-right 60s linear infinite !important;
   }
   
   .ticker-item {
