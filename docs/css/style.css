@@ -21,69 +21,6 @@ body {
   max-width: 900px;
 }
 
-.sidebar-ad {
-  position: fixed;
-  top: 80px;
-  width: 160px;
-  height: 600px;
-  z-index: 100;
-  display: none;
-  background: rgba(253, 208, 35, 0.1);
-  border: 2px dashed rgba(253, 208, 35, 0.5);
-  border-radius: 8px;
-}
-
-.sidebar-ad::before {
-  content: "AD";
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  color: rgba(253, 208, 35, 0.5);
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.sidebar-left {
-  left: 10px;
-}
-
-.sidebar-right {
-  right: 10px;
-}
-
-@media (min-width: 1200px) {
-  .sidebar-ad {
-    display: block;
-  }
-}
-
-.top-banner-ad {
-  width: 728px;
-  height: 90px;
-  margin: 0 auto 20px auto;
-  background: rgba(253, 208, 35, 0.1);
-  border: 2px dashed rgba(253, 208, 35, 0.5);
-  border-radius: 8px;
-  display: none;
-}
-
-.top-banner-ad::before {
-  content: "AD - 728x90 Leaderboard";
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  color: rgba(253, 208, 35, 0.5);
-  font-size: 18px;
-  font-weight: bold;
-}
-
-@media (min-width: 768px) {
-  .top-banner-ad {
-    display: block;
-  }
-}
 
 h1 {
   text-align: center;
@@ -378,38 +315,6 @@ a.tombollink3:hover {
   margin-top: 8px;
 }
 
-.in-feed-ad {
-  cursor: default;
-  background: rgba(253, 208, 35, 0.05);
-  border: 2px dashed rgba(253, 208, 35, 0.4);
-}
-
-.in-feed-ad:hover {
-  transform: none;
-  box-shadow: none;
-}
-
-.ad-label {
-  color: rgba(253, 208, 35, 0.6);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-.in-feed-ad-content {
-  min-height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(253, 208, 35, 0.4);
-  font-size: 16px;
-}
-
-.in-feed-ad-content::before {
-  content: "Sponsored Content";
-}
 
 .news-content {
   padding: 0;
