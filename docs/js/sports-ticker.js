@@ -338,19 +338,6 @@ window.addEventListener('load', function() {
   }, 100);
 });
 
-// Strategy 4: Check when page becomes visible (mobile tab switching)
-document.addEventListener('visibilitychange', function() {
-  if (document.visibilityState === 'visible' && !scoresLoaded) {
-    tryLoadScores();
-  }
-});
-
-// Strategy 5: Focus event
-window.addEventListener('focus', function() {
-  if (!scoresLoaded) {
-    tryLoadScores();
-  }
-});
 
 // Drag scrolling functionality
 document.addEventListener('DOMContentLoaded', () => {
