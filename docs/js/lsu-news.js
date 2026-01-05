@@ -38,16 +38,9 @@ function getSportFromCategories(categories) {
 }
 
 function createNewsCard(article) {
-  const sport = getSportFromCategories(article.categories);
-  const sportBadge = sport ? `<span class="news-sport-badge">${sport}</span>` : '';
-  
   return `
     <a href="${article.link || '#'}" target="_blank" class="news-card">
-      <div class="news-image-placeholder">
-        <span class="lsu-logo">LSU</span>
-      </div>
       <div class="news-content">
-        ${sportBadge}
         <h3 class="news-title">${article.title}</h3>
         <p class="news-meta">By ${article.author || 'LSU Athletics'} - ${formatDate(article.pubDate)}</p>
       </div>
