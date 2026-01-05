@@ -617,4 +617,9 @@ a.tombollink3:hover {
   .main-content > div:first-child {
     display: none;
   }
+  
+  .audio-wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 }
