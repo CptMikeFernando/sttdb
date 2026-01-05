@@ -104,6 +104,11 @@ async function loadAllScores() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const tickerTrack = document.getElementById('ticker-content');
+  tickerTrack.style.animation = 'none';
+  tickerTrack.offsetHeight;
+  tickerTrack.style.animation = '';
+  
   loadAllScores();
   setInterval(loadAllScores, 60000);
 });
