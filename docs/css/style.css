@@ -309,7 +309,7 @@ a.tombollink3:hover {
 .news-section {
   width: 100%;
   max-width: 900px;
-  margin-top: 0;
+  margin-top: -15px;
   padding: 20px;
 }
 
