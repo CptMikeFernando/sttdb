@@ -59,7 +59,10 @@ const SPORT_LABELS = {
 
 async function fetchScores(sport, url) {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, { 
+      cache: 'no-cache',
+      priority: 'high'
+    });
     const data = await response.json();
     return parseGames(data, sport);
   } catch (error) {
@@ -136,9 +139,11 @@ async function loadAllScores() {
   tickerContent.style.animation = 'scroll-right 180s linear infinite';
 }
 
+// Start loading scores immediately when script loads
+loadAllScores();
+setInterval(loadAllScores, 60000);
+
 document.addEventListener('DOMContentLoaded', () => {
-  loadAllScores();
-  setInterval(loadAllScores, 60000);
   
   // Enable drag scrolling on the ticker
   const ticker = document.querySelector('.sports-ticker');
