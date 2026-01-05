@@ -1,27 +1,18 @@
-const LSU_NEWS_APIS = [
-  'https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/99/news',
-  'https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/teams/99/news',
-  'https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/99/news'
-];
+const LSU_RSS_FEED = 'https://api.rss2json.com/v1/api.json?rss_url=https://lsusports.net/feed&count=15';
 
 async function fetchLSUNews() {
-  const allNews = [];
-  
-  for (const url of LSU_NEWS_APIS) {
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      if (data.articles) {
-        allNews.push(...data.articles);
-      }
-    } catch (error) {
-      console.log('Error fetching news:', error);
+  try {
+    const response = await fetch(LSU_RSS_FEED);
+    const data = await response.json();
+    
+    if (data.status === 'ok' && data.items) {
+      return data.items.slice(0, 10);
     }
+    return [];
+  } catch (error) {
+    console.log('Error fetching LSU news:', error);
+    return [];
   }
-  
-  allNews.sort((a, b) => new Date(b.published) - new Date(a.published));
-  
-  return allNews.slice(0, 10);
 }
 
 function formatDate(dateString) {
@@ -33,18 +24,30 @@ function formatDate(dateString) {
   });
 }
 
+function extractImage(content) {
+  if (!content) return 'img/chillinmikecigar2.png';
+  const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
+  return imgMatch ? imgMatch[1] : 'img/chillinmikecigar2.png';
+}
+
+function stripHtml(html) {
+  if (!html) return '';
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  return tmp.textContent || tmp.innerText || '';
+}
+
 function createNewsCard(article) {
-  const imageUrl = article.images && article.images.length > 0 
-    ? article.images[0].url 
-    : 'img/chillinmikecigar2.png';
+  const imageUrl = article.thumbnail || article.enclosure?.link || extractImage(article.content);
+  const description = stripHtml(article.description || article.content || '').substring(0, 150);
   
   return `
-    <a href="${article.links?.web?.href || '#'}" target="_blank" class="news-card">
+    <a href="${article.link || '#'}" target="_blank" class="news-card">
       <div class="news-image" style="background-image: url('${imageUrl}')"></div>
       <div class="news-content">
-        <h3 class="news-title">${article.headline}</h3>
-        <p class="news-description">${article.description || ''}</p>
-        <span class="news-date">${formatDate(article.published)}</span>
+        <h3 class="news-title">${article.title}</h3>
+        <p class="news-description">${description}...</p>
+        <span class="news-date">${formatDate(article.pubDate)}</span>
       </div>
     </a>
   `;
