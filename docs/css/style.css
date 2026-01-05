@@ -16,7 +16,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 70px 20px 20px 20px;
+  padding: 110px 20px 20px 20px;
   margin: 0 auto;
   max-width: 900px;
 }
@@ -240,6 +240,42 @@ a.tombollink3:hover {
   }
 }
 
+/* Forum Button */
+.forum-button-container {
+  position: fixed;
+  top: 53px;
+  left: 0;
+  right: 0;
+  background: #461D7C;
+  padding: 10px 0;
+  z-index: 9998;
+  text-align: center;
+}
+
+.forum-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #FDD023 0%, #e5bc1f 100%);
+  color: #461D7C;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.forum-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #ffe14d 0%, #FDD023 100%);
+}
+
+.forum-button i {
+  margin-right: 8px;
+}
+
 .news-section {
   width: 100%;
   max-width: 900px;
@@ -360,7 +396,17 @@ a.tombollink3:hover {
 
 @media (max-width: 768px) {
   .main-content {
-    padding-top: 80px;
+    padding-top: 120px;
+  }
+  
+  .forum-button-container {
+    top: 50px;
+    padding: 8px 0;
+  }
+  
+  .forum-button {
+    padding: 8px 20px;
+    font-size: 14px;
   }
   
   .news-card {
