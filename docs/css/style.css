@@ -38,10 +38,44 @@ img {
 audio {
   width: 350px;
   height: 50px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #1a0a30 0%, #2d1150 100%);
+  outline: none;
+}
+
+audio::-webkit-media-controls-panel {
+  background: linear-gradient(135deg, #2d1150 0%, #461D7C 100%);
+  border-radius: 30px;
+  padding: 5px 15px;
+}
+
+audio::-webkit-media-controls-play-button {
+  background-color: #FDD023;
+  border-radius: 50%;
+  transform: scale(1.3);
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  color: #FDD023;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+audio::-webkit-media-controls-timeline {
+  background-color: rgba(253, 208, 35, 0.3);
+  border-radius: 10px;
 }
 
 .container {
   margin: 15px 0;
+}
+
+.audio-wrapper {
+  background: linear-gradient(135deg, #2d1150 0%, #461D7C 100%);
+  padding: 15px 25px;
+  border-radius: 40px;
+  border: 2px solid rgba(253, 208, 35, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .tombollink3 {
