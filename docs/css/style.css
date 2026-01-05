@@ -123,6 +123,7 @@ audio::-webkit-media-controls-timeline {
   background: #FDD023;
   border-radius: 50%;
   cursor: pointer;
+  margin-top: -4px;
 }
 
 .progress-bar::-moz-range-thumb {
