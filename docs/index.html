@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang=”en”>
+<html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=0.8">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body {
-  background-color: #461D7C;
-}
-</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2180098394455320"
+     crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/a5a62b4847.js" crossorigin="anonymous"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+</style>
 </head>
 <body>
-
-<meta name="viewport" content="width=device-width, initial-scale=0.8">
-<meta name="viewport" content="height=device-height, initial-scale=0.8">
 
 <!-- Sports Ticker Carousel -->
 <div class="sports-ticker">
@@ -21,92 +19,96 @@ body {
     <span class="ticker-item">Loading scores...</span>
   </div>
 </div>
-  
-<!--Centered Image Start-->  
 
+<!-- Left Sidebar Ad -->
+<div class="sidebar-ad sidebar-left">
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:160px;height:600px"
+       data-ad-client="ca-pub-2180098394455320"
+       data-ad-slot="auto"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+<!-- Right Sidebar Ad -->
+<div class="sidebar-ad sidebar-right">
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:160px;height:600px"
+       data-ad-client="ca-pub-2180098394455320"
+       data-ad-slot="auto"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  
 <h1>S T T D B</h1>
   
 <div>
+  <img width="400" height="400" src="img/chillinmikecigar2.png" alt="STTDB">
+</div>
+ 
+<div class="container">
+  <div class="audio-wrapper">
+    <button class="play-btn" id="playBtn" onclick="togglePlay()">
+      <span class="play-icon">&#9654;</span>
+    </button>
+    <input type="range" id="progressBar" class="progress-bar" value="0" min="0" max="100">
+    <audio id="mainAudio" preload="auto" loop>
+      <source src="https://raw.githubusercontent.com/CptMikeFernando/sttdb/master/docs/neck.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
 
-
-<img width="400" height="400" img src="img/chillinmikecigar2.png" alt="STTDB">
-
-<script>
-      function play() {
-        var audio = document.getElementById("audio");
-        audio.play();
+  <script>
+    const audio = document.getElementById('mainAudio');
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = playBtn.querySelector('.play-icon');
+    const progressBar = document.getElementById('progressBar');
+    
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play().then(function() {
+          playIcon.innerHTML = '&#10074;&#10074;';
+        }).catch(function(error) {
+          console.log('Play error:', error);
+        });
+      } else {
+        audio.pause();
+        playIcon.innerHTML = '&#9654;';
       }
-    </script>
-
-</div>
- 
- 
- <div class="container">
-
-<div class="audio-wrapper">
-  <button class="play-btn" id="playBtn" onclick="togglePlay()">
-    <span class="play-icon">&#9654;</span>
-  </button>
-  <input type="range" id="progressBar" class="progress-bar" value="0" min="0" max="100">
-  <audio id="mainAudio" preload="auto" loop>
-    <source src="https://raw.githubusercontent.com/CptMikeFernando/sttdb/master/docs/neck.mp3" type="audio/mpeg" />
-  </audio>
-</div>
-
-<script>
-  const audio = document.getElementById('mainAudio');
-  const playBtn = document.getElementById('playBtn');
-  const playIcon = playBtn.querySelector('.play-icon');
-  const progressBar = document.getElementById('progressBar');
-  
-  function togglePlay() {
-    if (audio.paused) {
-      audio.play().then(function() {
-        playIcon.innerHTML = '&#10074;&#10074;';
-      }).catch(function(error) {
-        console.log('Play error:', error);
-      });
-    } else {
-      audio.pause();
+    }
+    
+    audio.addEventListener('timeupdate', function() {
+      if (audio.duration) {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.value = progress;
+      }
+    });
+    
+    progressBar.addEventListener('input', function() {
+      if (audio.duration) {
+        const time = (progressBar.value / 100) * audio.duration;
+        audio.currentTime = time;
+      }
+    });
+    
+    audio.addEventListener('ended', function() {
       playIcon.innerHTML = '&#9654;';
-    }
-  }
-  
-  audio.addEventListener('timeupdate', function() {
-    if (audio.duration) {
-      const progress = (audio.currentTime / audio.duration) * 100;
-      progressBar.value = progress;
-    }
-  });
-  
-  progressBar.addEventListener('input', function() {
-    if (audio.duration) {
-      const time = (progressBar.value / 100) * audio.duration;
-      audio.currentTime = time;
-    }
-  });
-  
-  audio.addEventListener('ended', function() {
-    playIcon.innerHTML = '&#9654;';
-    progressBar.value = 0;
-  });
-  
-  audio.addEventListener('play', function() {
-    playIcon.innerHTML = '&#10074;&#10074;';
-  });
-  
-  audio.addEventListener('pause', function() {
-    playIcon.innerHTML = '&#9654;';
-  });
-</script>
-
+      progressBar.value = 0;
+    });
+    
+    audio.addEventListener('play', function() {
+      playIcon.innerHTML = '&#10074;&#10074;';
+    });
+    
+    audio.addEventListener('pause', function() {
+      playIcon.innerHTML = '&#9654;';
+    });
+  </script>
 </div>
-
-<style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-</style>
-  
-<!--Centered Image End-->
 
 <!-- LSU News Section -->
 <section class="news-section">
@@ -116,9 +118,11 @@ body {
 </section>
 
 <div class="social-links">
-       <a class='tombollink3' href='http://sttdb.infinityfreeapp.com/?i=1' target='_blank' title='Send Message'><i class="fa-solid fa-comments"></i></a>
-       <a class='tombollink3' href='https://instagram.com/geaux_sttdb' target='_blank' title='Instagram'><i class="fa fa-instagram"></i></a>
-       <a class='tombollink3' href='https://x.com/geaux_sttdb' target='_blank' title='Twitter'><i class="fa fa-twitter"></i></a>
+  <a class='tombollink3' href='http://sttdb.infinityfreeapp.com/?i=1' target='_blank' title='Send Message'><i class="fa-solid fa-comments"></i></a>
+  <a class='tombollink3' href='https://instagram.com/geaux_sttdb' target='_blank' title='Instagram'><i class="fa fa-instagram"></i></a>
+  <a class='tombollink3' href='https://x.com/geaux_sttdb' target='_blank' title='Twitter'><i class="fa fa-twitter"></i></a>
+</div>
+
 </div>
 
 <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'/>
@@ -127,10 +131,3 @@ body {
   
 </body>
 </html>
-
-
-
-
-
-
-
