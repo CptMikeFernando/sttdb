@@ -301,14 +301,13 @@ a.tombollink3:hover {
   font-size: 14px;
 }
 
+.sport-icon {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
 .sport-label {
-  background-color: #FDD023;
-  color: #461D7C;
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 700;
-  margin-right: 10px;
+  display: none;
 }
 
 @keyframes scroll-right {
@@ -626,11 +625,9 @@ a.tombollink3:hover {
     height: 58px !important;
   }
   
-  .sport-label {
-    font-size: 11px;
-    padding: 2px 5px;
-    display: inline-flex !important;
-    align-items: center !important;
+  .sport-icon {
+    font-size: 16px;
+    margin-right: 6px;
   }
   
   .game-status {

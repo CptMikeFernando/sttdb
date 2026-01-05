@@ -117,7 +117,7 @@ function parseGames(data, sport) {
 }
 
 function createTickerItem(game) {
-  return `<span class="ticker-item"><span class="sport-label">${game.sportLabel.icon} ${game.sportLabel.name}</span> ${game.away} ${game.awayScore} - ${game.homeScore} ${game.home} <span class="game-status">(${game.status})</span></span>`;
+  return `<span class="ticker-item"><span class="sport-icon">${game.sportLabel.icon}</span> ${game.away} ${game.awayScore} - ${game.homeScore} ${game.home} <span class="game-status">(${game.status})</span></span>`;
 }
 
 // Cache scores in localStorage for instant display
