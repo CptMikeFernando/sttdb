@@ -106,11 +106,43 @@ audio::-webkit-media-controls-timeline {
   margin-left: 3px;
 }
 
-.audio-duration {
-  color: #FDD023;
-  font-family: 'Poppins', Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 500;
+.progress-bar {
+  width: 200px;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(253, 208, 35, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #FDD023;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.progress-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #FDD023;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.progress-bar::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 4px;
+}
+
+.progress-bar::-moz-range-track {
+  height: 8px;
+  background: rgba(253, 208, 35, 0.3);
+  border-radius: 4px;
 }
 
 #mainAudio {
