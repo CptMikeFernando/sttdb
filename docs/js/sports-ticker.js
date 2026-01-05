@@ -339,25 +339,31 @@ window.addEventListener('load', function() {
 });
 
 
-// Prevent animation restart on tab switch
+// Prevent animation restart on tab switch using Web Animations API
 document.addEventListener('DOMContentLoaded', () => {
-  const tickerTrack = document.querySelector('.ticker-track');
-  let savedTransform = null;
+  let savedProgress = 0;
+  const ANIMATION_DURATION = 90000; // 90s in ms
   
   document.addEventListener('visibilitychange', () => {
+    const tickerTrack = document.querySelector('.ticker-track');
+    if (!tickerTrack) return;
+    
     if (document.hidden) {
-      // Save current position when leaving
-      const computedStyle = window.getComputedStyle(tickerTrack);
-      savedTransform = computedStyle.transform;
+      // Save current animation progress
+      const animations = tickerTrack.getAnimations();
+      if (animations.length > 0) {
+        savedProgress = animations[0].currentTime % ANIMATION_DURATION;
+      }
       tickerTrack.style.animationPlayState = 'paused';
     } else {
-      // Resume from saved position
-      if (savedTransform) {
-        tickerTrack.style.transform = savedTransform;
-        // Force reflow then resume
-        tickerTrack.offsetHeight;
-        tickerTrack.style.animationPlayState = 'running';
+      // Resume from saved position using negative delay
+      if (savedProgress > 0) {
+        tickerTrack.style.animation = 'none';
+        tickerTrack.offsetHeight; // Force reflow
+        tickerTrack.style.animation = '';
+        tickerTrack.style.animationDelay = `-${savedProgress / 1000}s`;
       }
+      tickerTrack.style.animationPlayState = 'running';
     }
   });
 });
