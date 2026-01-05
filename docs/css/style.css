@@ -189,13 +189,29 @@ a.tombollink3:hover {
   width: 100% !important;
   background: linear-gradient(90deg, #1a0a30 0%, #2d1150 50%, #1a0a30 100%);
   border-bottom: 3px solid #FDD023;
-  overflow: hidden !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
   z-index: 9999 !important;
   padding: 14px 0;
   margin: 0 !important;
   display: block !important;
   height: auto !important;
   min-height: 50px;
+  cursor: grab;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sports-ticker::-webkit-scrollbar {
+  display: none;
+}
+
+.sports-ticker:active {
+  cursor: grabbing;
+}
+
+.sports-ticker.paused .ticker-track {
+  animation-play-state: paused;
 }
 
 .ticker-track {

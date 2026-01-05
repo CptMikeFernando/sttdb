@@ -111,4 +111,63 @@ async function loadAllScores() {
 document.addEventListener('DOMContentLoaded', () => {
   loadAllScores();
   setInterval(loadAllScores, 60000);
+  
+  // Enable drag scrolling on the ticker
+  const ticker = document.querySelector('.sports-ticker');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  let resumeTimeout;
+  
+  ticker.addEventListener('mousedown', (e) => {
+    isDown = true;
+    ticker.classList.add('paused');
+    startX = e.pageX - ticker.offsetLeft;
+    scrollLeft = ticker.scrollLeft;
+    clearTimeout(resumeTimeout);
+  });
+  
+  ticker.addEventListener('mouseleave', () => {
+    if (isDown) {
+      isDown = false;
+      resumeTimeout = setTimeout(() => {
+        ticker.classList.remove('paused');
+      }, 2000);
+    }
+  });
+  
+  ticker.addEventListener('mouseup', () => {
+    isDown = false;
+    resumeTimeout = setTimeout(() => {
+      ticker.classList.remove('paused');
+    }, 2000);
+  });
+  
+  ticker.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - ticker.offsetLeft;
+    const walk = (x - startX) * 2;
+    ticker.scrollLeft = scrollLeft - walk;
+  });
+  
+  // Touch support
+  ticker.addEventListener('touchstart', (e) => {
+    ticker.classList.add('paused');
+    startX = e.touches[0].pageX - ticker.offsetLeft;
+    scrollLeft = ticker.scrollLeft;
+    clearTimeout(resumeTimeout);
+  });
+  
+  ticker.addEventListener('touchend', () => {
+    resumeTimeout = setTimeout(() => {
+      ticker.classList.remove('paused');
+    }, 2000);
+  });
+  
+  ticker.addEventListener('touchmove', (e) => {
+    const x = e.touches[0].pageX - ticker.offsetLeft;
+    const walk = (x - startX) * 2;
+    ticker.scrollLeft = scrollLeft - walk;
+  });
 });
