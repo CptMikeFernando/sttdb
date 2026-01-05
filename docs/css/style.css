@@ -192,11 +192,11 @@ a.tombollink3:hover {
   overflow-x: auto !important;
   overflow-y: hidden !important;
   z-index: 9999 !important;
-  padding: 14px 0;
+  padding: 18px 0;
   margin: 0 !important;
   display: block !important;
   height: auto !important;
-  min-height: 50px;
+  min-height: 60px;
   cursor: grab;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -227,7 +227,7 @@ a.tombollink3:hover {
   padding: 0 40px;
   color: #FDD023;
   font-family: 'Poppins', Arial, sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -437,7 +437,7 @@ a.tombollink3:hover {
   .header-row .forum-button {
     position: fixed;
     right: 10px;
-    top: 55px;
+    top: 95px;
   }
   
   .forum-button {
