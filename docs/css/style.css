@@ -179,7 +179,10 @@ audio::-webkit-media-controls-timeline {
 .play-icon {
   color: #461D7C;
   font-size: 20px;
-  margin-left: 3px;
+}
+
+.play-btn.playing .play-icon {
+  letter-spacing: 2px;
 }
 
 .progress-bar {

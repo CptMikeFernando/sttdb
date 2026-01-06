@@ -100,10 +100,12 @@
     
     audio.addEventListener('play', function() {
       playIcon.innerHTML = '&#10074;&#10074;';
+      playBtn.classList.add('playing');
     });
     
     audio.addEventListener('pause', function() {
       playIcon.innerHTML = '&#9654;';
+      playBtn.classList.remove('playing');
     });
   </script>
 </div>
