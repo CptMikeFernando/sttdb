@@ -633,11 +633,16 @@ a.tombollink3:hover {
     width: 100%;
     max-width: calc(100vw - 80px);
     box-sizing: border-box;
-    justify-content: flex-start;
+    justify-content: flex-start !important;
+    padding: 15px 15px !important;
   }
   
   .progress-bar {
-    flex: 1;
-    width: auto;
+    flex: 1 !important;
+    width: auto !important;
+  }
+  
+  .play-btn {
+    flex-shrink: 0;
   }
 }
