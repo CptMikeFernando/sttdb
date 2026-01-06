@@ -625,12 +625,12 @@ a.tombollink3:hover {
   .audio-wrapper {
     margin-top: 30px;
     margin-bottom: 5px;
-    width: 100%;
+    width: calc(100% - 40px);
     box-sizing: border-box;
   }
   
   .container {
     width: 100%;
-    padding: 0;
+    padding: 0 20px;
   }
 }
