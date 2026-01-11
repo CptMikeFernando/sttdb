@@ -1,85 +1,75 @@
-async function fetchRecruitingNews() {
-  const container = document.getElementById('recruiting-container');
+function fetchRecruitingNews() {
+  var container = document.getElementById('recruiting-container');
+  var rssUrl = 'https://www.yardbarker.com/rss/school/511';
   
-  const rssUrl = 'https://lsutigerswire.usatoday.com/feed/';
+  console.log('Fetching recruiting news...');
   
-  const proxyUrls = [
-    'https://api.allorigins.win/get?url=' + encodeURIComponent(rssUrl),
-    'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(rssUrl)
-  ];
+  var proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(rssUrl);
 
-  for (const proxyUrl of proxyUrls) {
-    try {
-      console.log('Trying:', proxyUrl.substring(0, 50) + '...');
-      const response = await fetch(proxyUrl);
-      if (response.ok) {
-        let xmlText;
-        const data = await response.json().catch(function() { return null; });
-        if (data && data.contents) {
-          xmlText = data.contents;
-        } else {
-          xmlText = await response.text();
+  fetch(proxyUrl)
+    .then(function(response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.json();
+    })
+    .then(function(data) {
+      if (!data.contents) throw new Error('No contents');
+      
+      console.log('Got RSS feed');
+      var parser = new DOMParser();
+      var xmlDoc = parser.parseFromString(data.contents, 'text/xml');
+      var items = xmlDoc.querySelectorAll('item');
+      
+      if (items.length === 0) throw new Error('No items');
+
+      var recruitingKeywords = ['recruit', 'commit', 'transfer', 'portal', 'signing', 'offer', 'visit', 'target', 'prospect', 'class', '2025', '2026', '2027'];
+      var allArticles = [];
+      
+      items.forEach(function(item) {
+        var title = item.querySelector('title') ? item.querySelector('title').textContent : '';
+        var link = item.querySelector('link') ? item.querySelector('link').textContent : '#';
+        var pubDate = item.querySelector('pubDate') ? item.querySelector('pubDate').textContent : '';
+        var description = item.querySelector('description') ? item.querySelector('description').textContent : '';
+        allArticles.push({ title: title, link: link, pubDate: pubDate, description: description });
+      });
+
+      var recruitingArticles = allArticles.filter(function(article) {
+        var text = (article.title + ' ' + article.description).toLowerCase();
+        return recruitingKeywords.some(function(kw) { return text.indexOf(kw) !== -1; });
+      });
+
+      var articles = recruitingArticles.length > 0 ? recruitingArticles.slice(0, 10) : allArticles.slice(0, 10);
+      var html = '';
+      
+      articles.forEach(function(article) {
+        var dateStr = '';
+        if (article.pubDate) {
+          var d = new Date(article.pubDate);
+          dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
         }
-        
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-        const items = xmlDoc.querySelectorAll('item');
-        
-        if (items.length > 0) {
-          const recruitingKeywords = ['recruit', 'commit', 'transfer', 'portal', 'signing', 'offer', 'visit', 'target', 'prospect', 'class of'];
-          
-          let allArticles = [];
-          items.forEach(function(item) {
-            const title = item.querySelector('title')?.textContent || '';
-            const link = item.querySelector('link')?.textContent || '#';
-            const pubDate = item.querySelector('pubDate')?.textContent || '';
-            const description = item.querySelector('description')?.textContent || '';
-            
-            allArticles.push({ title, link, pubDate, description });
-          });
-          
-          let recruitingArticles = allArticles.filter(function(article) {
-            const titleLower = article.title.toLowerCase();
-            const descLower = article.description.toLowerCase();
-            return recruitingKeywords.some(function(keyword) {
-              return titleLower.includes(keyword) || descLower.includes(keyword);
-            });
-          });
-          
-          let articles = recruitingArticles.length > 0 ? recruitingArticles.slice(0, 10) : allArticles.slice(0, 10);
-          
-          let html = '';
-          articles.forEach(function(article) {
-            const dateObj = article.pubDate ? new Date(article.pubDate) : null;
-            const dateStr = dateObj ? dateObj.toLocaleDateString('en-US', { 
-              month: 'short', 
-              day: 'numeric', 
-              year: 'numeric' 
-            }) : '';
-            
-            let desc = article.description.replace(/<[^>]*>/g, '');
-            desc = desc.substring(0, 150);
-            if (desc.length === 150) desc += '...';
+        var desc = article.description.replace(/<[^>]*>/g, '').substring(0, 150);
+        if (desc.length === 150) desc += '...';
 
-            html += '<a href="' + article.link + '" target="_blank" class="news-card">' +
-              '<div class="news-content">' +
-              '<h3 class="news-title">' + article.title + '</h3>' +
-              '<p class="news-meta">LSU Tigers Wire' + (dateStr ? ' - ' + dateStr : '') + '</p>' +
-              (desc ? '<p class="news-excerpt">' + desc + '</p>' : '') +
-              '</div></a>';
-          });
+        html += '<a href="' + article.link + '" target="_blank" class="news-card">' +
+          '<div class="news-content">' +
+          '<h3 class="news-title">' + article.title + '</h3>' +
+          '<p class="news-meta">Yardbarker - ' + dateStr + '</p>' +
+          (desc ? '<p class="news-excerpt">' + desc + '</p>' : '') +
+          '</div></a>';
+      });
 
-          container.innerHTML = html;
-          console.log('Recruiting news loaded:', articles.length, 'articles');
-          return;
-        }
-      }
-    } catch (error) {
-      console.log('Proxy error:', error.message);
-    }
-  }
-
-  container.innerHTML = '<p class="loading-text">Recruiting news coming soon. Check back later!</p>';
+      container.innerHTML = html;
+      console.log('Recruiting news loaded:', articles.length);
+    })
+    .catch(function(error) {
+      console.log('Recruiting news error:', error.message);
+      var fallbackHtml = '<a href="https://www.yardbarker.com/colleges/lsu_tigers/511" target="_blank" class="news-card">' +
+        '<div class="news-content">' +
+        '<h3 class="news-title">Visit Yardbarker for Latest LSU Recruiting News</h3>' +
+        '<p class="news-meta">Yardbarker</p>' +
+        '<p class="news-excerpt">Click here to read the latest LSU Tigers news, recruiting updates, and more.</p>' +
+        '</div></a>';
+      container.innerHTML = fallbackHtml;
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {

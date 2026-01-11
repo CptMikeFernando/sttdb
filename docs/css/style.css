@@ -405,32 +405,43 @@ a.tombollink3:hover {
 
 .news-tabs {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 0;
+  margin-bottom: 15px;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .news-tab {
-  padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(253, 208, 35, 0.3);
-  border-radius: 25px;
-  color: #FDD023;
+  padding: 10px 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: rgba(253, 208, 35, 0.6);
   font-family: 'Poppins', Arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .news-tab:hover {
-  background: rgba(253, 208, 35, 0.2);
-  border-color: #FDD023;
+  color: #FDD023;
+  border-bottom-color: rgba(253, 208, 35, 0.4);
 }
 
 .news-tab.active {
-  background: #FDD023;
-  color: #461D7C;
-  border-color: #FDD023;
+  color: #FDD023;
+  border-bottom-color: #FDD023;
+  background: transparent;
+}
+
+.tab-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(253, 208, 35, 0.2);
+  margin-bottom: 20px;
 }
 
 .news-container {

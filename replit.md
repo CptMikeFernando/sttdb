@@ -28,7 +28,7 @@ The site is served using Python's built-in HTTP server on port 5000.
 Configured as a static site deployment serving from the `docs/` directory.
 
 ## Recent Changes (Jan 2026)
-- Added Sports News and Recruiting tabs above news articles
+- Added Sports News and Recruiting tabs above news articles (left-aligned, underline style)
 - Sped up score carousel animation (45s CSS)
-- Created recruiting news fetcher using LSU Tigers Wire RSS via CORS proxy
+- Created recruiting news fetcher using Yardbarker LSU RSS via allorigins CORS proxy
 - Mobile-specific audio player layout adjustments
