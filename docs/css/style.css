@@ -153,9 +153,12 @@ audio::-webkit-media-controls-timeline {
   gap: 15px;
   background: linear-gradient(135deg, #2d1150 0%, #461D7C 100%);
   padding: 15px 30px;
-  border-radius: 40px;
+  border-radius: 12px;
   border: 2px solid rgba(253, 208, 35, 0.4);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 860px;
+  box-sizing: border-box;
 }
 
 .play-btn {
@@ -512,6 +515,9 @@ a.tombollink3:hover {
   margin-top: 8px;
 }
 
+.news-excerpt {
+  display: none;
+}
 
 .news-content {
   padding: 0;
