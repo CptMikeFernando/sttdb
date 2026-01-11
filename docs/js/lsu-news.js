@@ -24,22 +24,26 @@ function formatDate(dateString) {
   });
 }
 
-function getSportFromCategories(categories) {
-  if (!categories || categories.length === 0) return '';
-  const sports = ['Football', 'Basketball', 'Baseball', 'Gymnastics', 'Volleyball', 'Soccer', 'Track', 'Swimming', 'Golf', 'Tennis', 'Softball'];
-  for (const cat of categories) {
-    for (const sport of sports) {
-      if (cat.toLowerCase().includes(sport.toLowerCase())) {
-        return sport;
-      }
-    }
+function extractImageFromContent(content) {
+  if (!content) return null;
+  var imgMatch = content.match(/<img[^>]+src=["']([^"']+)["']/i);
+  if (imgMatch && imgMatch[1]) {
+    return imgMatch[1];
   }
-  return '';
+  return null;
 }
 
 function createNewsCard(article) {
+  var imageUrl = article.thumbnail || article.enclosure?.link || extractImageFromContent(article.content) || extractImageFromContent(article.description);
+  
+  var imageHtml = '';
+  if (imageUrl) {
+    imageHtml = '<div class="news-image"><img src="' + imageUrl + '" alt="' + (article.title || 'Article image') + '" loading="lazy"></div>';
+  }
+  
   return `
     <a href="${article.link || '#'}" target="_blank" class="news-card">
+      ${imageHtml}
       <div class="news-content">
         <h3 class="news-title">${article.title}</h3>
         <p class="news-meta">By ${article.author || 'LSU Athletics'} - ${formatDate(article.pubDate)}</p>

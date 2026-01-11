@@ -36,6 +36,19 @@ function fetchRecruitingNews() {
       });
   }
   
+  function extractImageFromContent(content) {
+    if (!content) return null;
+    var imgMatch = content.match(/<img[^>]+src=["']([^"']+)["']/i);
+    if (imgMatch && imgMatch[1]) {
+      return imgMatch[1];
+    }
+    var mediaMatch = content.match(/url=["']([^"']+\.(jpg|jpeg|png|gif|webp)[^"']*)["']/i);
+    if (mediaMatch && mediaMatch[1]) {
+      return mediaMatch[1];
+    }
+    return null;
+  }
+  
   function parseAndDisplayNews(xmlText) {
     var parser = new DOMParser();
     var xmlDoc = parser.parseFromString(xmlText, 'text/xml');
@@ -54,7 +67,29 @@ function fetchRecruitingNews() {
       var link = item.querySelector('link') ? item.querySelector('link').textContent : '#';
       var pubDate = item.querySelector('pubDate') ? item.querySelector('pubDate').textContent : '';
       var description = item.querySelector('description') ? item.querySelector('description').textContent : '';
-      allArticles.push({ title: title, link: link, pubDate: pubDate, description: description });
+      
+      var imageUrl = null;
+      
+      var allChildren = item.children;
+      for (var i = 0; i < allChildren.length; i++) {
+        var child = allChildren[i];
+        var tagName = child.tagName ? child.tagName.toLowerCase() : '';
+        if (tagName.includes('content') || tagName.includes('media') || tagName === 'enclosure') {
+          var url = child.getAttribute('url');
+          if (url) {
+            imageUrl = url;
+            break;
+          }
+        }
+      }
+      
+      if (!imageUrl) {
+        imageUrl = extractImageFromContent(description);
+      }
+      
+      console.log('Article:', title.substring(0, 30), 'Image:', imageUrl ? 'YES' : 'NO');
+      
+      allArticles.push({ title: title, link: link, pubDate: pubDate, description: description, imageUrl: imageUrl });
     });
 
     var recruitingArticles = allArticles.filter(function(article) {
@@ -74,7 +109,13 @@ function fetchRecruitingNews() {
       var desc = article.description.replace(/<[^>]*>/g, '').substring(0, 150);
       if (desc.length === 150) desc += '...';
 
+      var imageHtml = '';
+      if (article.imageUrl) {
+        imageHtml = '<div class="news-image"><img src="' + article.imageUrl + '" alt="' + article.title + '" loading="lazy"></div>';
+      }
+
       html += '<a href="' + article.link + '" target="_blank" class="news-card">' +
+        imageHtml +
         '<div class="news-content">' +
         '<h3 class="news-title">' + article.title + '</h3>' +
         '<p class="news-meta">Yardbarker - ' + dateStr + '</p>' +

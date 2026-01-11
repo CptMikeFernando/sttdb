@@ -471,11 +471,17 @@ a.tombollink3:hover {
 }
 
 .news-image {
-  width: 180px;
-  min-height: 120px;
-  background-size: cover;
-  background-position: center;
-  flex-shrink: 0;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.news-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .news-image-placeholder {
