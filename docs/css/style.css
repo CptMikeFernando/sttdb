@@ -695,4 +695,18 @@ a.tombollink3:hover {
   .play-btn {
     flex-shrink: 0;
   }
+  
+  .news-image {
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-right: -20px;
+    border-radius: 0;
+    height: 220px;
+  }
+  
+  .news-image img {
+    max-width: none;
+    width: 100%;
+    height: 100%;
+  }
 }
