@@ -57,6 +57,14 @@ body {
   width: 150px;
 }
 
+.audio-label {
+  color: #FDD023;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
 .nav-tiger-img {
   height: 55px;
   width: auto;
