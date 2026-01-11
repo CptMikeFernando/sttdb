@@ -171,9 +171,6 @@ audio::-webkit-media-controls-timeline {
   border-radius: 10px;
 }
 
-.container {
-  margin: 15px 0 25px 0;
-}
 
 .audio-wrapper {
   display: flex;
