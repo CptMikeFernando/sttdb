@@ -85,8 +85,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 125px 20px 20px 20px;
+  justify-content: flex-start;
+  padding: 130px 20px 20px 20px;
   margin: 0 auto;
   max-width: 900px;
 }
@@ -143,7 +143,7 @@ audio::-webkit-media-controls-timeline {
 }
 
 .container {
-  margin: 15px 0;
+  margin: 15px 0 25px 0;
 }
 
 .audio-wrapper {
@@ -657,10 +657,6 @@ a.tombollink3:hover {
   
   .main-content {
     padding-top: 70px;
-  }
-  
-  .main-content > div:first-child {
-    display: none;
   }
   
   .container {
