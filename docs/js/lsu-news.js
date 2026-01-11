@@ -83,6 +83,8 @@ function createNewsCard(article) {
                  extractImageFromContent(article.content) || 
                  extractImageFromContent(article.description);
   
+  console.log('Sports article:', article.title.substring(0, 30), 'Image:', imageUrl ? 'YES' : 'NO', imageUrl ? imageUrl.substring(0, 50) : '');
+  
   var imageHtml = '';
   if (imageUrl) {
     imageHtml = '<div class="news-image"><img src="' + imageUrl + '" alt="' + (article.title || 'Article image') + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'"></div>';
