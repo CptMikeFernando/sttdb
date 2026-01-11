@@ -1,5 +1,6 @@
 const LSU_OFFICIAL_FEED = 'https://api.rss2json.com/v1/api.json?rss_url=https://lsusports.net/feed';
 const ESPN_CFB_FEED = 'https://api.rss2json.com/v1/api.json?rss_url=https://www.espn.com/espn/rss/ncf/news';
+const ATVS_FEED = 'https://api.rss2json.com/v1/api.json?rss_url=https://www.andthevalleyshook.com/rss/current.xml';
 
 async function fetchFromFeed(url, source) {
   try {
@@ -31,18 +32,20 @@ function filterLSUContent(articles) {
 async function fetchAllNews() {
   console.log('Fetching sports news from multiple sources...');
   
-  const [lsuNews, espnNews] = await Promise.all([
+  const [lsuNews, espnNews, atvsNews] = await Promise.all([
     fetchFromFeed(LSU_OFFICIAL_FEED, 'LSU Athletics'),
-    fetchFromFeed(ESPN_CFB_FEED, 'ESPN')
+    fetchFromFeed(ESPN_CFB_FEED, 'ESPN'),
+    fetchFromFeed(ATVS_FEED, 'And The Valley Shook')
   ]);
   
   console.log('LSU Official articles:', lsuNews.length);
   console.log('ESPN articles:', espnNews.length);
+  console.log('ATVS articles:', atvsNews.length);
   
   const lsuFromEspn = filterLSUContent(espnNews);
   console.log('ESPN LSU-filtered articles:', lsuFromEspn.length);
   
-  const combined = [...lsuNews, ...lsuFromEspn];
+  const combined = [...lsuNews, ...lsuFromEspn, ...atvsNews];
   
   combined.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
   
