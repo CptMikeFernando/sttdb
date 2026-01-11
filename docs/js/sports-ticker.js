@@ -206,7 +206,7 @@ function applyTickerAnimation() {
   tickerContent.style.animation = 'none';
   tickerContent.style.transform = 'translateX(-33.33%)';
   void tickerContent.offsetWidth;
-  tickerContent.style.animation = 'scroll-right 180s linear infinite';
+  tickerContent.style.animation = 'scroll-right 90s linear infinite';
 }
 
 // Track if scores loaded successfully
