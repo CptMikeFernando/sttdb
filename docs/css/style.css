@@ -32,6 +32,31 @@ body {
   gap: 8px;
 }
 
+.header-audio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #2d1150 0%, #461D7C 100%);
+  padding: 8px 20px;
+  border-radius: 10px;
+  border: 2px solid rgba(253, 208, 35, 0.4);
+  margin-left: 15px;
+}
+
+.header-audio .play-btn {
+  width: 40px;
+  height: 40px;
+}
+
+.header-audio .play-icon-header {
+  color: #461D7C;
+  font-size: 16px;
+}
+
+.header-audio .progress-bar {
+  width: 150px;
+}
+
 .nav-tiger-img {
   height: 55px;
   width: auto;
@@ -86,9 +111,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 130px 20px 20px 20px;
+  padding: 100px 20px 20px 20px;
   margin: 0 auto;
   max-width: 900px;
+}
+
+.container {
+  display: none;
 }
 
 
@@ -572,6 +601,14 @@ a.tombollink3:hover {
   .main-nav {
     padding: 10px 15px;
     top: 0 !important;
+  }
+  
+  .header-audio {
+    display: none !important;
+  }
+  
+  .container {
+    display: flex !important;
   }
   
   .main-content > div:first-child img[src*="chillinmikecigar"] {

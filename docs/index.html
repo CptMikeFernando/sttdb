@@ -21,6 +21,12 @@
   <div class="nav-logo-container">
     <img src="img/tiger-head.png" alt="Tiger" class="nav-tiger-img">
     <img src="img/sttdb-logo.png" alt="STTDB" class="nav-logo-img">
+    <div class="audio-wrapper header-audio">
+      <button class="play-btn" id="playBtnHeader" onclick="togglePlay()">
+        <span class="play-icon-header">&#9654;</span>
+      </button>
+      <input type="range" id="progressBarHeader" class="progress-bar" value="0" min="0" max="100">
+    </div>
   </div>
   <ul class="nav-links">
     <li><a href="/" class="nav-link active">Home</a></li>
@@ -59,19 +65,24 @@
   <script>
     const audio = document.getElementById('mainAudio');
     const playBtn = document.getElementById('playBtn');
+    const playBtnHeader = document.getElementById('playBtnHeader');
     const playIcon = playBtn.querySelector('.play-icon');
+    const playIconHeader = playBtnHeader.querySelector('.play-icon-header');
     const progressBar = document.getElementById('progressBar');
+    const progressBarHeader = document.getElementById('progressBarHeader');
     
     function togglePlay() {
       if (audio.paused) {
         audio.play().then(function() {
           playIcon.innerHTML = '&#10074;&#10074;';
+          playIconHeader.innerHTML = '&#10074;&#10074;';
         }).catch(function(error) {
           console.log('Play error:', error);
         });
       } else {
         audio.pause();
         playIcon.innerHTML = '&#9654;';
+        playIconHeader.innerHTML = '&#9654;';
       }
     }
     
@@ -79,6 +90,7 @@
       if (audio.duration) {
         const progress = (audio.currentTime / audio.duration) * 100;
         progressBar.value = progress;
+        progressBarHeader.value = progress;
       }
     });
     
@@ -89,19 +101,32 @@
       }
     });
     
+    progressBarHeader.addEventListener('input', function() {
+      if (audio.duration) {
+        const time = (progressBarHeader.value / 100) * audio.duration;
+        audio.currentTime = time;
+      }
+    });
+    
     audio.addEventListener('ended', function() {
       playIcon.innerHTML = '&#9654;';
+      playIconHeader.innerHTML = '&#9654;';
       progressBar.value = 0;
+      progressBarHeader.value = 0;
     });
     
     audio.addEventListener('play', function() {
       playIcon.innerHTML = '&#10074;&#10074;';
+      playIconHeader.innerHTML = '&#10074;&#10074;';
       playBtn.classList.add('playing');
+      playBtnHeader.classList.add('playing');
     });
     
     audio.addEventListener('pause', function() {
       playIcon.innerHTML = '&#9654;';
+      playIconHeader.innerHTML = '&#9654;';
       playBtn.classList.remove('playing');
+      playBtnHeader.classList.remove('playing');
     });
   </script>
 </div>
