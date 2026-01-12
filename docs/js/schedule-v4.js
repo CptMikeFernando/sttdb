@@ -72,22 +72,22 @@ const LSU_BASEBALL_2026 = [
 ];
 
 const LSU_MENS_BASKETBALL_2025_26 = [
-  { date: '2025-11-04', opponent: 'ULM', time: '7:00 PM' },
-  { date: '2025-11-08', opponent: 'at UCF', time: '2:00 PM' },
-  { date: '2025-11-12', opponent: 'Charleston So', time: '7:00 PM' },
-  { date: '2025-11-17', opponent: 'vs UCF', time: '6:00 PM' },
-  { date: '2025-11-18', opponent: 'vs Wichita St', time: '8:30 PM' },
-  { date: '2025-11-21', opponent: 'North Texas', time: '8:00 PM' },
-  { date: '2025-11-25', opponent: 'vs Maryland', time: '4:30 PM' },
-  { date: '2025-11-26', opponent: 'vs St. Johns', time: 'TBD' },
-  { date: '2025-12-03', opponent: 'Tulane', time: '8:00 PM' },
-  { date: '2025-12-07', opponent: 'SMU', time: '1:00 PM' },
-  { date: '2025-12-14', opponent: 'Southern Miss', time: '4:00 PM' },
-  { date: '2025-12-21', opponent: 'Pittsburgh', time: '12:00 PM' },
-  { date: '2025-12-29', opponent: 'Nicholls', time: '1:00 PM' },
-  { date: '2026-01-04', opponent: 'at Texas A&M', time: '1:00 PM' },
-  { date: '2026-01-07', opponent: 'Missouri', time: '9:00 PM' },
-  { date: '2026-01-11', opponent: 'at South Carolina', time: '1:00 PM' },
+  { date: '2025-11-04', opponent: 'ULM', time: '7:00 PM', result: 'W 102-60' },
+  { date: '2025-11-08', opponent: 'at UCF', time: '2:00 PM', result: 'W 89-70' },
+  { date: '2025-11-12', opponent: 'Charleston So', time: '7:00 PM', result: 'W 96-33' },
+  { date: '2025-11-17', opponent: 'vs UCF', time: '6:00 PM', result: 'W 93-68' },
+  { date: '2025-11-18', opponent: 'vs Wichita St', time: '8:30 PM', result: 'L 63-70' },
+  { date: '2025-11-21', opponent: 'North Texas', time: '8:00 PM', result: 'W 73-59' },
+  { date: '2025-11-25', opponent: 'vs Maryland', time: '4:30 PM', result: 'W 69-63' },
+  { date: '2025-11-26', opponent: 'vs St. Johns', time: 'TBD', result: 'L 76-78' },
+  { date: '2025-12-03', opponent: 'Tulane', time: '8:00 PM', result: 'W 94-59' },
+  { date: '2025-12-07', opponent: 'SMU', time: '1:00 PM', result: 'W 73-51' },
+  { date: '2025-12-14', opponent: 'Southern Miss', time: '4:00 PM', result: 'W 97-60' },
+  { date: '2025-12-21', opponent: 'Pittsburgh', time: '12:00 PM', result: 'W 95-80' },
+  { date: '2025-12-29', opponent: 'Nicholls', time: '1:00 PM', result: 'W 91-44' },
+  { date: '2026-01-04', opponent: 'at Texas A&M', time: '1:00 PM', result: 'L 72-88' },
+  { date: '2026-01-07', opponent: 'Missouri', time: '9:00 PM', result: 'L 82-83' },
+  { date: '2026-01-11', opponent: 'at Vanderbilt', time: '1:00 PM', result: 'L 74-84' },
   { date: '2026-01-14', opponent: 'Kentucky', time: '6:00 PM' },
   { date: '2026-01-17', opponent: 'Missouri', time: '2:30 PM' },
   { date: '2026-01-20', opponent: 'at Florida', time: '6:00 PM' },
@@ -102,22 +102,22 @@ const LSU_MENS_BASKETBALL_2025_26 = [
 ];
 
 const LSU_WOMENS_BASKETBALL_2025_26 = [
-  { date: '2025-11-04', opponent: 'Eastern Kentucky', time: '7:00 PM' },
-  { date: '2025-11-10', opponent: 'at Clemson', time: '6:00 PM' },
-  { date: '2025-11-14', opponent: 'Southern', time: '7:00 PM' },
-  { date: '2025-11-17', opponent: 'Murray State', time: '11:00 AM' },
-  { date: '2025-11-21', opponent: 'UL Monroe', time: '7:00 PM' },
-  { date: '2025-11-28', opponent: 'vs UCLA', time: '1:30 PM' },
-  { date: '2025-11-29', opponent: 'vs Oregon/Duke', time: 'TBD' },
-  { date: '2025-12-04', opponent: 'Grambling State', time: '7:00 PM' },
-  { date: '2025-12-08', opponent: 'at Stanford', time: '5:00 PM' },
-  { date: '2025-12-14', opponent: 'Tulane', time: '1:00 PM' },
-  { date: '2025-12-17', opponent: 'Northwestern St', time: '7:00 PM' },
-  { date: '2025-12-21', opponent: 'SE Louisiana', time: '2:00 PM' },
-  { date: '2025-12-29', opponent: 'Coppin State', time: '1:00 PM' },
-  { date: '2026-01-02', opponent: 'at Vanderbilt', time: '6:00 PM' },
-  { date: '2026-01-05', opponent: 'Kentucky', time: '3:00 PM' },
-  { date: '2026-01-11', opponent: 'Texas', time: '1:00 PM' },
+  { date: '2025-11-04', opponent: 'Eastern Kentucky', time: '7:00 PM', result: 'W 95-44' },
+  { date: '2025-11-10', opponent: 'at Clemson', time: '6:00 PM', result: 'W 77-53' },
+  { date: '2025-11-14', opponent: 'Southern', time: '7:00 PM', result: 'W 80-42' },
+  { date: '2025-11-17', opponent: 'Murray State', time: '11:00 AM', result: 'W 119-59' },
+  { date: '2025-11-21', opponent: 'UL Monroe', time: '7:00 PM', result: 'W 100-53' },
+  { date: '2025-11-28', opponent: 'vs UCLA', time: '1:30 PM', result: 'L 60-75' },
+  { date: '2025-11-29', opponent: 'vs Oregon', time: 'TBD', result: 'W 69-65' },
+  { date: '2025-12-04', opponent: 'Grambling State', time: '7:00 PM', result: 'W 93-49' },
+  { date: '2025-12-08', opponent: 'at Stanford', time: '5:00 PM', result: 'W 79-72' },
+  { date: '2025-12-14', opponent: 'Tulane', time: '1:00 PM', result: 'W 66-55' },
+  { date: '2025-12-17', opponent: 'Northwestern St', time: '7:00 PM', result: 'W 93-47' },
+  { date: '2025-12-21', opponent: 'SE Louisiana', time: '2:00 PM', result: 'W 95-32' },
+  { date: '2025-12-29', opponent: 'Coppin State', time: '1:00 PM', result: 'W 111-48' },
+  { date: '2026-01-02', opponent: 'at Vanderbilt', time: '6:00 PM', result: 'L 63-68' },
+  { date: '2026-01-05', opponent: 'Kentucky', time: '3:00 PM', result: 'W 92-62' },
+  { date: '2026-01-11', opponent: 'Texas', time: '1:00 PM', result: 'W 70-65' },
   { date: '2026-01-18', opponent: 'at Oklahoma', time: '2:00 PM' },
   { date: '2026-01-22', opponent: 'at Texas A&M', time: '8:00 PM' },
   { date: '2026-01-26', opponent: 'Florida', time: '7:00 PM' },
@@ -190,6 +190,23 @@ function isGameDayOrPast(dateStr) {
   return gameDate <= today;
 }
 
+function parseHardcodedResult(resultStr) {
+  if (!resultStr) return null;
+  const match = resultStr.match(/([WL])\s+(\d+)-(\d+)/);
+  if (match) {
+    const won = match[1] === 'W';
+    const lsuScore = parseInt(match[2]);
+    const oppScore = parseInt(match[3]);
+    return {
+      completed: true,
+      lsuWon: won,
+      lsuScore: lsuScore,
+      oppScore: oppScore
+    };
+  }
+  return null;
+}
+
 async function renderSchedule(schedule, containerId, sport) {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -201,7 +218,14 @@ async function renderSchedule(schedule, containerId, sport) {
     let resultCell = '';
     let resultClass = '';
     
-    if (isGameDayOrPast(game.date)) {
+    if (game.result) {
+      const parsed = parseHardcodedResult(game.result);
+      if (parsed) {
+        const letter = parsed.lsuWon ? 'W' : 'L';
+        resultClass = parsed.lsuWon ? 'win' : 'loss';
+        resultCell = `<span class="result-letter ${resultClass}">${letter}</span> ${parsed.lsuScore}-${parsed.oppScore}`;
+      }
+    } else if (isGameDayOrPast(game.date)) {
       const result = await fetchGameResult(game.date, sport);
       if (result && result.completed) {
         const letter = result.lsuWon ? 'W' : 'L';
