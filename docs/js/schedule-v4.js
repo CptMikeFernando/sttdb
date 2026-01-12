@@ -71,7 +71,7 @@ const LSU_BASEBALL_2026 = [
   { date: '2026-05-17', opponent: 'Florida', time: 'TBD' }
 ];
 
-const LSU_BASKETBALL_2025_26 = [
+const LSU_MENS_BASKETBALL_2025_26 = [
   { date: '2025-11-04', opponent: 'ULM', time: '7:00 PM' },
   { date: '2025-11-08', opponent: 'at UCF', time: '2:00 PM' },
   { date: '2025-11-12', opponent: 'Charleston So', time: '7:00 PM' },
@@ -88,22 +88,47 @@ const LSU_BASKETBALL_2025_26 = [
   { date: '2026-01-04', opponent: 'at Texas A&M', time: '1:00 PM' },
   { date: '2026-01-07', opponent: 'Missouri', time: '9:00 PM' },
   { date: '2026-01-11', opponent: 'at South Carolina', time: '1:00 PM' },
-  { date: '2026-01-14', opponent: 'Vanderbilt', time: '9:00 PM' },
-  { date: '2026-01-18', opponent: 'at Kentucky', time: '1:00 PM' },
-  { date: '2026-01-21', opponent: 'Texas', time: '7:00 PM' },
-  { date: '2026-01-25', opponent: 'at Florida', time: '4:00 PM' },
-  { date: '2026-01-28', opponent: 'Oklahoma', time: '9:00 PM' },
-  { date: '2026-02-01', opponent: 'at Alabama', time: '2:00 PM' },
-  { date: '2026-02-04', opponent: 'Georgia', time: '7:00 PM' },
-  { date: '2026-02-07', opponent: 'at Arkansas', time: '4:00 PM' },
-  { date: '2026-02-11', opponent: 'Tennessee', time: '7:00 PM' },
-  { date: '2026-02-14', opponent: 'at Auburn', time: '2:00 PM' },
-  { date: '2026-02-18', opponent: 'Mississippi St', time: '9:00 PM' },
-  { date: '2026-02-21', opponent: 'at Ole Miss', time: '6:00 PM' },
-  { date: '2026-02-25', opponent: 'Alabama', time: '7:00 PM' },
-  { date: '2026-02-28', opponent: 'at Texas', time: '4:00 PM' },
-  { date: '2026-03-04', opponent: 'Auburn', time: '7:00 PM' },
-  { date: '2026-03-07', opponent: 'at Tennessee', time: '12:00 PM' }
+  { date: '2026-01-14', opponent: 'Kentucky', time: '6:00 PM' },
+  { date: '2026-01-17', opponent: 'Missouri', time: '2:30 PM' },
+  { date: '2026-01-20', opponent: 'at Florida', time: '6:00 PM' },
+  { date: '2026-01-24', opponent: 'at Arkansas', time: '7:30 PM' },
+  { date: '2026-01-28', opponent: 'Mississippi State', time: '6:00 PM' },
+  { date: '2026-01-31', opponent: 'at South Carolina', time: '5:00 PM' },
+  { date: '2026-02-07', opponent: 'Georgia', time: '5:00 PM' },
+  { date: '2026-02-17', opponent: 'at Texas', time: '8:00 PM' },
+  { date: '2026-02-21', opponent: 'Alabama', time: '5:00 PM' },
+  { date: '2026-02-25', opponent: 'at Ole Miss', time: '8:00 PM' },
+  { date: '2026-02-28', opponent: 'Oklahoma', time: '5:00 PM' }
+];
+
+const LSU_WOMENS_BASKETBALL_2025_26 = [
+  { date: '2025-11-04', opponent: 'Eastern Kentucky', time: '7:00 PM' },
+  { date: '2025-11-10', opponent: 'at Clemson', time: '6:00 PM' },
+  { date: '2025-11-14', opponent: 'Southern', time: '7:00 PM' },
+  { date: '2025-11-17', opponent: 'Murray State', time: '11:00 AM' },
+  { date: '2025-11-21', opponent: 'UL Monroe', time: '7:00 PM' },
+  { date: '2025-11-28', opponent: 'vs UCLA', time: '1:30 PM' },
+  { date: '2025-11-29', opponent: 'vs Oregon/Duke', time: 'TBD' },
+  { date: '2025-12-04', opponent: 'Grambling State', time: '7:00 PM' },
+  { date: '2025-12-08', opponent: 'at Stanford', time: '5:00 PM' },
+  { date: '2025-12-14', opponent: 'Tulane', time: '1:00 PM' },
+  { date: '2025-12-17', opponent: 'Northwestern St', time: '7:00 PM' },
+  { date: '2025-12-21', opponent: 'SE Louisiana', time: '2:00 PM' },
+  { date: '2025-12-29', opponent: 'Coppin State', time: '1:00 PM' },
+  { date: '2026-01-02', opponent: 'at Vanderbilt', time: '6:00 PM' },
+  { date: '2026-01-05', opponent: 'Kentucky', time: '3:00 PM' },
+  { date: '2026-01-11', opponent: 'Texas', time: '1:00 PM' },
+  { date: '2026-01-18', opponent: 'at Oklahoma', time: '2:00 PM' },
+  { date: '2026-01-22', opponent: 'at Texas A&M', time: '8:00 PM' },
+  { date: '2026-01-26', opponent: 'Florida', time: '7:00 PM' },
+  { date: '2026-01-29', opponent: 'Arkansas', time: '7:00 PM' },
+  { date: '2026-02-01', opponent: 'Alabama', time: '11:00 AM' },
+  { date: '2026-02-05', opponent: 'at Texas', time: '8:00 PM' },
+  { date: '2026-02-08', opponent: 'at Auburn', time: '1:00 PM' },
+  { date: '2026-02-14', opponent: 'South Carolina', time: '7:30 PM' },
+  { date: '2026-02-19', opponent: 'at Ole Miss', time: '8:00 PM' },
+  { date: '2026-02-22', opponent: 'Missouri', time: '3:00 PM' },
+  { date: '2026-02-26', opponent: 'at Tennessee', time: '5:00 PM' }
 ];
 
 async function fetchGameResult(gameDate, sport) {
@@ -115,8 +140,10 @@ async function fetchGameResult(gameDate, sport) {
       url = `https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=${dateStr}`;
     } else if (sport === 'baseball') {
       url = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/scoreboard?dates=${dateStr}`;
-    } else if (sport === 'basketball') {
+    } else if (sport === 'mens-basketball') {
       url = `https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=${dateStr}`;
+    } else if (sport === 'womens-basketball') {
+      url = `https://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/scoreboard?dates=${dateStr}`;
     }
     
     const response = await fetch(url);
@@ -205,12 +232,14 @@ async function renderSchedule(schedule, containerId, sport) {
 function initSchedules() {
   renderSchedule(LSU_FOOTBALL_2026, 'football-schedule-content', 'football');
   renderSchedule(LSU_BASEBALL_2026, 'baseball-schedule-content', 'baseball');
-  renderSchedule(LSU_BASKETBALL_2025_26, 'basketball-schedule-content', 'basketball');
+  renderSchedule(LSU_MENS_BASKETBALL_2025_26, 'mens-basketball-schedule-content', 'mens-basketball');
+  renderSchedule(LSU_WOMENS_BASKETBALL_2025_26, 'womens-basketball-schedule-content', 'womens-basketball');
   
   setInterval(() => {
     renderSchedule(LSU_FOOTBALL_2026, 'football-schedule-content', 'football');
     renderSchedule(LSU_BASEBALL_2026, 'baseball-schedule-content', 'baseball');
-    renderSchedule(LSU_BASKETBALL_2025_26, 'basketball-schedule-content', 'basketball');
+    renderSchedule(LSU_MENS_BASKETBALL_2025_26, 'mens-basketball-schedule-content', 'mens-basketball');
+    renderSchedule(LSU_WOMENS_BASKETBALL_2025_26, 'womens-basketball-schedule-content', 'womens-basketball');
   }, 300000);
 }
 
