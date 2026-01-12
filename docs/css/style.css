@@ -118,13 +118,13 @@ body {
   display: none;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .schedule-sidebar {
     display: block;
-    position: fixed;
-    left: 15px;
-    top: 183px;
-    width: 240px;
+    position: absolute;
+    left: 20px;
+    top: 175px;
+    width: 280px;
     background: rgba(45, 17, 80, 0.95);
     border-radius: 8px;
     border: 1px solid rgba(253, 208, 35, 0.3);
