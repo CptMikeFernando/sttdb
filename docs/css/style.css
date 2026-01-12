@@ -807,7 +807,7 @@ a.tombollink3:hover {
   }
   
   .layout-wrapper {
-    padding-top: 70px;
+    padding-top: 0;
   }
   
   .news-tab {
@@ -923,21 +923,23 @@ a.tombollink3:hover {
   }
   
   .main-content {
-    padding-top: 70px;
+    padding-top: 60px;
   }
   
   .container {
     width: 100%;
     padding: 0;
     box-sizing: border-box;
+    display: flex !important;
+    justify-content: center;
   }
   
   .audio-wrapper {
-    margin: 30px 0 5px 0;
+    margin: 10px 0 10px 0;
     width: 100%;
     max-width: calc(100vw - 80px);
     box-sizing: border-box;
-    justify-content: flex-start !important;
+    justify-content: center !important;
     padding: 15px 15px !important;
   }
   
