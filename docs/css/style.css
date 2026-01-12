@@ -1,7 +1,7 @@
 :root {
   font-size: clamp(12px, 0.8vw, 14px);
   --ticker-height: 32px;
-  --content-width: 800px;
+  --content-width: 700px;
   --sidebar-width: 280px;
   --desktop-gap: 1.5rem;
 }
