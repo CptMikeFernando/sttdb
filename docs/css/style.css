@@ -124,7 +124,7 @@ body {
     position: absolute;
     left: 15px;
     top: 235px;
-    width: 255px;
+    width: 420px;
     background: rgba(45, 17, 80, 0.95);
     border-radius: 8px;
     border: 1px solid rgba(253, 208, 35, 0.3);
@@ -147,7 +147,7 @@ body {
 
 .schedule-table-header {
   display: grid;
-  grid-template-columns: 50px 1fr 70px;
+  grid-template-columns: 80px 1fr 100px;
   padding: 6px 12px;
   background: rgba(70, 29, 124, 0.8);
   border-bottom: 1px solid rgba(253, 208, 35, 0.2);
@@ -174,7 +174,7 @@ body {
 
 .schedule-row {
   display: grid;
-  grid-template-columns: 50px 1fr 70px;
+  grid-template-columns: 80px 1fr 100px;
   align-items: center;
   padding: 8px 12px;
   border-bottom: 1px solid rgba(253, 208, 35, 0.1);
