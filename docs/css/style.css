@@ -4,7 +4,7 @@
   --nav-height: 48px;
   --header-offset: calc(var(--ticker-height) + var(--nav-height) + 10px);
   --content-width: 700px;
-  --sidebar-width: 290px;
+  --sidebar-width: clamp(290px, 22vw, 340px);
   --desktop-gap: 1.5rem;
 }
 
