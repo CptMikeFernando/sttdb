@@ -48,7 +48,7 @@ async function fetchGameResult(gameDate) {
   }
 }
 
-function formatDate(dateStr) {
+function formatScheduleDate(dateStr) {
   const date = new Date(dateStr + 'T12:00:00');
   return `${date.getMonth() + 1}/${date.getDate()}`;
 }
@@ -67,7 +67,7 @@ async function renderSchedule() {
   let html = '';
   
   for (const game of LSU_SCHEDULE_2026) {
-    const formattedDate = formatDate(game.date);
+    const formattedDate = formatScheduleDate(game.date);
     let resultCell = '';
     let resultClass = '';
     
