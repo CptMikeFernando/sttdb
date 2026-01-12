@@ -155,11 +155,20 @@ body {
     top: 175px;
     left: max(10px, calc((100vw - var(--content-width)) / 4 - var(--sidebar-width) / 2));
     width: var(--sidebar-width);
+    padding: 0;
+    z-index: 100;
+  }
+  
+  .schedule-box {
     background: rgba(45, 17, 80, 0.95);
     border-radius: 0.5rem;
     border: 1px solid rgba(253, 208, 35, 0.3);
-    padding: 0;
-    z-index: 100;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  
+  .schedule-box:last-child {
+    margin-bottom: 0;
   }
   
   .main-content {
