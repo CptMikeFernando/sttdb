@@ -182,7 +182,7 @@ body {
     display: block;
     position: absolute;
     top: 0;
-    left: calc(-1 * var(--sidebar-width) - 20px);
+    left: calc(-1 * ((100vw - var(--content-width)) / 4 + var(--sidebar-width) / 2));
     width: var(--sidebar-width);
   }
   
