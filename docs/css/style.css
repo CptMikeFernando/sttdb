@@ -1,9 +1,9 @@
 :root {
   font-size: clamp(12px, 0.8vw, 14px);
   --ticker-height: 32px;
-  --content-width: 1100px;
-  --sidebar-width: 320px;
-  --desktop-gap: 2rem;
+  --content-width: 750px;
+  --sidebar-width: 220px;
+  --desktop-gap: 1.5rem;
 }
 
 * {
@@ -141,7 +141,7 @@ body {
   display: none;
 }
 
-@media (min-width: 1450px) {
+@media (min-width: 1024px) {
   .layout-wrapper {
     display: grid;
     grid-template-columns: var(--sidebar-width) var(--content-width);
@@ -600,6 +600,7 @@ a.tombollink3:hover {
 .news-section {
   width: 100%;
   max-width: var(--content-width);
+  margin: 0 auto;
   margin-top: -15px;
   padding: 20px;
 }
