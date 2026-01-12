@@ -22,14 +22,14 @@ body {
   align-items: center;
   justify-content: space-between;
   background-color: #2d1150;
-  padding: 2px 16px;
+  padding: 6px 18px;
   position: fixed;
   top: var(--ticker-height);
   left: 0;
   right: 0;
   z-index: 10000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  height: 42px;
+  height: 48px;
 }
 
 .nav-logo-container {
@@ -468,8 +468,8 @@ a.tombollink3:hover {
   margin: 0 !important;
   display: flex !important;
   align-items: center !important;
-  height: 45px !important;
-  min-height: 45px;
+  height: var(--ticker-height) !important;
+  min-height: var(--ticker-height);
   cursor: grab;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -494,29 +494,29 @@ a.tombollink3:hover {
   animation: scroll-right 45s linear infinite;
   margin: 0 !important;
   padding-left: 0;
-  height: 45px;
+  height: var(--ticker-height);
 }
 
 .ticker-item {
   display: inline-block;
-  padding: 0 40px;
+  padding: 0 24px;
   color: #461D7C;
   font-family: 'Poppins', Arial, sans-serif;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 600;
-  line-height: 60px;
+  line-height: var(--ticker-height);
   vertical-align: middle;
 }
 
 .game-status {
   color: #666666;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 11px;
 }
 
 .sport-icon {
-  font-size: 20px;
-  margin-right: 8px;
+  font-size: 14px;
+  margin-right: 6px;
 }
 
 .sport-label {
