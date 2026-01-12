@@ -761,32 +761,41 @@ a.tombollink3:hover {
 .sidebar {
   position: fixed;
   top: 130px;
-  width: 220px;
+  width: 200px;
   z-index: 100;
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
 }
 
 .sidebar-left {
-  left: 10px;
+  left: 15px;
 }
 
 .sidebar-right {
-  right: 10px;
+  right: 15px;
 }
 
 .sidebar-widget {
-  background: linear-gradient(135deg, #2d1150 0%, #3a1a60 100%);
-  border-radius: 10px;
+  background: linear-gradient(180deg, #2d1150 0%, #1a0a30 100%);
+  border-radius: 12px;
   padding: 15px;
-  border: 2px solid rgba(253, 208, 35, 0.3);
+  border: 2px solid rgba(253, 208, 35, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .widget-title {
   color: #FDD023;
   font-family: 'Poppins', Arial, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   margin-bottom: 12px;
   text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(253, 208, 35, 0.3);
+}
+
+.widget-title i {
+  margin-right: 6px;
 }
 
 .schedule-list {
@@ -841,6 +850,12 @@ a.tombollink3:hover {
   color: #461D7C;
 }
 
+.poll-btn-lsu {
+  background: #FDD023;
+  color: #461D7C;
+  font-weight: 700;
+}
+
 .poll-results {
   margin-top: 10px;
 }
@@ -890,48 +905,8 @@ a.tombollink3:hover {
   margin-top: 10px;
 }
 
-@media (max-width: 1500px) and (min-width: 769px) {
-  .sidebar {
-    position: static;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto 20px auto;
-  }
-  
-  .sidebar-left {
-    order: -1;
-  }
-  
-  .sidebar-right {
-    order: 1;
-  }
-  
-  .schedule-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    max-height: none;
-  }
-  
-  .schedule-item {
-    flex: 1 1 calc(33% - 10px);
-    min-width: 150px;
-  }
-  
-  .poll-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  
-  .poll-btn {
-    flex: 1 1 calc(25% - 8px);
-    min-width: 100px;
-  }
-}
-
 @media (max-width: 768px) {
   .sidebar {
-    display: none;
+    display: none !important;
   }
 }
