@@ -141,10 +141,10 @@ body {
 @media (min-width: 1100px) {
   .layout-wrapper {
     display: grid;
-    grid-template-columns: 16rem 1fr 16rem;
-    gap: 1.5rem;
+    grid-template-columns: 220px 1fr 220px;
+    gap: 2rem;
     max-width: 100%;
-    padding: 100px 1rem 1.5rem 1rem;
+    padding: 100px 2rem 1.5rem 2rem;
     margin: 0 auto;
   }
   
@@ -160,6 +160,7 @@ body {
     border: 1px solid rgba(253, 208, 35, 0.3);
     padding: 0;
     z-index: 100;
+    margin-top: 45px;
   }
   
   .main-content {
@@ -167,7 +168,7 @@ body {
     justify-self: center;
     margin: 0;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1100px;
   }
 }
 
@@ -596,7 +597,7 @@ a.tombollink3:hover {
 
 .news-section {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1100px;
   margin-top: -15px;
   padding: 20px;
 }
