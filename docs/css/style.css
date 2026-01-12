@@ -806,6 +806,15 @@ a.tombollink3:hover {
     display: none !important;
   }
   
+  .layout-wrapper {
+    padding-top: 70px;
+  }
+  
+  .news-tab {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  
   .main-nav {
     padding: 10px 15px;
     top: 0 !important;
