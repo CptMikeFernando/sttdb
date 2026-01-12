@@ -62,8 +62,9 @@ async function fetchGameResult(gameDate) {
 
 function formatDate(dateStr) {
   const date = new Date(dateStr + 'T12:00:00');
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  return `${months[date.getMonth()]} ${date.getDate()}`;
+  const months = ['Aug', 'Sep', 'Sep', 'Sep', 'Sep', 'Oct', 'Oct', 'Oct', 'Nov', 'Nov', 'Nov', 'Nov'];
+  const shortMonths = ['8/', '9/', '9/', '9/', '9/', '10/', '10/', '10/', '11/', '11/', '11/', '11/'];
+  return `${date.getMonth() + 1}/${date.getDate()}`;
 }
 
 function isGameDayOrPast(dateStr) {
