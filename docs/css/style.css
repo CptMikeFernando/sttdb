@@ -3,6 +3,7 @@
   --ticker-height: 32px;
   --nav-height: 48px;
   --header-offset: calc(var(--ticker-height) + var(--nav-height) + 10px);
+  --content-top: calc(var(--header-offset) + 110px);
   --content-width: 700px;
   --sidebar-width: 290px;
   --desktop-gap: 1.5rem;
@@ -162,7 +163,7 @@ body {
 
 @media (min-width: 1100px) {
   .ad-banner-container {
-    padding: 10px 15px 10px;
+    padding: 0 15px 10px;
   }
   
   .ad-banner-slot {
@@ -179,7 +180,7 @@ body {
   .schedule-sidebar {
     display: block;
     position: fixed;
-    top: calc(var(--header-offset) + 115px);
+    top: var(--content-top);
     left: max(10px, calc((100vw - var(--content-width)) / 4 - var(--sidebar-width) / 2));
     width: var(--sidebar-width);
     padding: 0;
@@ -188,7 +189,7 @@ body {
   
   .news-section {
     padding-top: 0;
-    margin-top: 0;
+    margin-top: -25px;
   }
   
   .schedule-box {
