@@ -183,8 +183,8 @@ body {
 
 .schedule-table-header {
   display: grid;
-  grid-template-columns: 45px 1fr 50px;
-  padding: 6px 12px;
+  grid-template-columns: 45px 1fr 65px;
+  padding: 6px 16px;
   background: rgba(70, 29, 124, 0.8);
   border-bottom: 1px solid rgba(253, 208, 35, 0.2);
   font-family: 'Poppins', Arial, sans-serif;
@@ -210,9 +210,9 @@ body {
 
 .schedule-row {
   display: grid;
-  grid-template-columns: 45px 1fr 50px;
+  grid-template-columns: 45px 1fr 65px;
   align-items: center;
-  padding: 8px 12px;
+  padding: 8px 16px;
   border-bottom: 1px solid rgba(253, 208, 35, 0.1);
   font-family: 'Poppins', Arial, sans-serif;
   font-size: 12px;
