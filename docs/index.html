@@ -51,9 +51,6 @@
 </div>
 <script src="js/sports-ticker.js"></script>
 
-<!-- Main Content -->
-<div class="page-wrapper">
-
 <!-- Left Sidebar - Schedule -->
 <aside class="sidebar sidebar-left">
   <div class="sidebar-widget">
@@ -111,7 +108,30 @@
   </div>
 </aside>
 
-<!-- Center Content -->
+<!-- Right Sidebar - Poll -->
+<aside class="sidebar sidebar-right">
+  <div class="sidebar-widget">
+    <h3 class="widget-title">2026 SEC Baseball Champion?</h3>
+    <div id="poll-container">
+      <div class="poll-options" id="poll-options">
+        <button class="poll-btn" onclick="submitVote('LSU')">LSU</button>
+        <button class="poll-btn" onclick="submitVote('Texas A&M')">Texas A&M</button>
+        <button class="poll-btn" onclick="submitVote('Tennessee')">Tennessee</button>
+        <button class="poll-btn" onclick="submitVote('Arkansas')">Arkansas</button>
+        <button class="poll-btn" onclick="submitVote('Vanderbilt')">Vanderbilt</button>
+        <button class="poll-btn" onclick="submitVote('Florida')">Florida</button>
+        <button class="poll-btn" onclick="submitVote('Ole Miss')">Ole Miss</button>
+        <button class="poll-btn" onclick="submitVote('Texas')">Texas</button>
+      </div>
+      <div class="poll-results" id="poll-results" style="display: none;">
+        <div class="results-list" id="results-list"></div>
+        <p class="total-votes" id="total-votes"></p>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
 <div class="main-content">
  
 <div class="container">
@@ -216,33 +236,6 @@
 
 </div>
 
-</div>
-
-<!-- Right Sidebar - Poll -->
-<aside class="sidebar sidebar-right">
-  <div class="sidebar-widget">
-    <h3 class="widget-title">2026 SEC Baseball Champion?</h3>
-    <div id="poll-container">
-      <div class="poll-options" id="poll-options">
-        <button class="poll-btn" onclick="submitVote('LSU')">LSU</button>
-        <button class="poll-btn" onclick="submitVote('Texas A&M')">Texas A&M</button>
-        <button class="poll-btn" onclick="submitVote('Tennessee')">Tennessee</button>
-        <button class="poll-btn" onclick="submitVote('Arkansas')">Arkansas</button>
-        <button class="poll-btn" onclick="submitVote('Vanderbilt')">Vanderbilt</button>
-        <button class="poll-btn" onclick="submitVote('Florida')">Florida</button>
-        <button class="poll-btn" onclick="submitVote('Ole Miss')">Ole Miss</button>
-        <button class="poll-btn" onclick="submitVote('Texas')">Texas</button>
-      </div>
-      <div class="poll-results" id="poll-results" style="display: none;">
-        <div class="results-list" id="results-list"></div>
-        <p class="total-votes" id="total-votes"></p>
-      </div>
-    </div>
-  </div>
-</aside>
-
-</div>
-
 <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'/>
 <script src="js/lsu-news.js"></script>
 <script src="js/recruiting-news.js"></script>
@@ -287,6 +280,59 @@ document.querySelectorAll('.news-tab').forEach(function(tab) {
     });
   });
 });
+
+function submitVote(team) {
+  fetch('/api/poll/vote', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ team: team })
+  })
+  .then(function(response) { return response.json(); })
+  .then(function(data) {
+    if (data.success) {
+      localStorage.setItem('poll_voted', 'true');
+      showResults();
+    }
+  })
+  .catch(function(err) {
+    console.log('Vote error:', err);
+  });
+}
+
+function showResults() {
+  fetch('/api/poll/results')
+  .then(function(response) { return response.json(); })
+  .then(function(data) {
+    var pollOptions = document.getElementById('poll-options');
+    var pollResults = document.getElementById('poll-results');
+    var resultsList = document.getElementById('results-list');
+    var totalVotes = document.getElementById('total-votes');
+    
+    if (pollOptions) pollOptions.style.display = 'none';
+    if (pollResults) pollResults.style.display = 'block';
+    
+    var teams = ['LSU', 'Texas A&M', 'Tennessee', 'Arkansas', 'Vanderbilt', 'Florida', 'Ole Miss', 'Texas'];
+    var html = '';
+    
+    teams.forEach(function(team) {
+      var votes = data.results[team] ? data.results[team].votes : 0;
+      var pct = data.results[team] ? data.results[team].percentage : 0;
+      html += '<div class="result-item">';
+      html += '<span class="result-team">' + team + ' (' + votes + ')</span>';
+      html += '<div class="result-bar-container">';
+      html += '<div class="result-bar" style="width: ' + pct + '%"></div>';
+      html += '<span class="result-percent">' + pct + '%</span>';
+      html += '</div></div>';
+    });
+    
+    if (resultsList) resultsList.innerHTML = html;
+    if (totalVotes) totalVotes.textContent = 'Total votes: ' + data.total;
+  });
+}
+
+if (localStorage.getItem('poll_voted') === 'true') {
+  showResults();
+}
 </script>
   
 </body>
