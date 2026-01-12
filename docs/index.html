@@ -51,89 +51,35 @@
 </div>
 <script src="js/sports-ticker.js"></script>
 
-<!-- Main Content -->
-<div class="main-content">
+<!-- 3-Column Layout Grid -->
+<div class="layout-grid">
 
 <!-- Left Sidebar - Schedule -->
 <aside class="sidebar sidebar-left">
-  <div class="sidebar-widget">
-    <h3 class="widget-title">2026 LSU Schedule</h3>
+  <div class="sidebar-widget schedule-widget">
+    <div class="widget-header">
+      <i class="fa fa-calendar"></i>
+      <h3 class="widget-title">2026 LSU Football</h3>
+    </div>
     <div class="schedule-list">
-      <div class="schedule-item">
-        <span class="schedule-date">Aug 29</span>
-        <span class="schedule-opponent">vs Fresno State</span>
-      </div>
-      <div class="schedule-item">
-        <span class="schedule-date">Sep 5</span>
-        <span class="schedule-opponent">vs Western Kentucky</span>
-      </div>
-      <div class="schedule-item">
-        <span class="schedule-date">Sep 12</span>
-        <span class="schedule-opponent">@ UCLA</span>
-      </div>
-      <div class="schedule-item">
-        <span class="schedule-date">Sep 19</span>
-        <span class="schedule-opponent">vs South Alabama</span>
-      </div>
-      <div class="schedule-item">
-        <span class="schedule-date">Sep 26</span>
-        <span class="schedule-opponent">@ Mississippi State</span>
-      </div>
-      <div class="schedule-item">
-        <span class="schedule-date">Oct 3</span>
-        <span class="schedule-opponent">vs Ole Miss</span>
-      </div>
-      <div class="schedule-item">
-        <span class="schedule-date">Oct 10</span>
-        <span class="schedule-opponent">@ Arkansas</span>
-      </div>
-      <div class="schedule-item">
-        <span class="schedule-date">Oct 17</span>
-        <span class="schedule-opponent">vs Texas A&M</span>
-      </div>
-      <div class="schedule-item">
-        <span class="schedule-date">Oct 31</span>
-        <span class="schedule-opponent">@ Texas</span>
-      </div>
-      <div class="schedule-item">
-        <span class="schedule-date">Nov 7</span>
-        <span class="schedule-opponent">vs Florida</span>
-      </div>
-      <div class="schedule-item">
-        <span class="schedule-date">Nov 14</span>
-        <span class="schedule-opponent">@ Alabama</span>
-      </div>
-      <div class="schedule-item">
-        <span class="schedule-date">Nov 28</span>
-        <span class="schedule-opponent">vs Oklahoma</span>
-      </div>
+      <div class="schedule-item"><span class="schedule-date">Aug 29</span><span class="schedule-opponent">vs Fresno State</span></div>
+      <div class="schedule-item"><span class="schedule-date">Sep 5</span><span class="schedule-opponent">vs Western Kentucky</span></div>
+      <div class="schedule-item"><span class="schedule-date">Sep 12</span><span class="schedule-opponent">@ UCLA</span></div>
+      <div class="schedule-item"><span class="schedule-date">Sep 19</span><span class="schedule-opponent">vs South Alabama</span></div>
+      <div class="schedule-item"><span class="schedule-date">Sep 26</span><span class="schedule-opponent">@ Mississippi State</span></div>
+      <div class="schedule-item"><span class="schedule-date">Oct 3</span><span class="schedule-opponent">vs Ole Miss</span></div>
+      <div class="schedule-item"><span class="schedule-date">Oct 10</span><span class="schedule-opponent">@ Arkansas</span></div>
+      <div class="schedule-item"><span class="schedule-date">Oct 17</span><span class="schedule-opponent">vs Texas A&M</span></div>
+      <div class="schedule-item"><span class="schedule-date">Oct 31</span><span class="schedule-opponent">@ Texas</span></div>
+      <div class="schedule-item"><span class="schedule-date">Nov 7</span><span class="schedule-opponent">vs Florida</span></div>
+      <div class="schedule-item"><span class="schedule-date">Nov 14</span><span class="schedule-opponent">@ Alabama</span></div>
+      <div class="schedule-item"><span class="schedule-date">Nov 28</span><span class="schedule-opponent">vs Oklahoma</span></div>
     </div>
   </div>
 </aside>
 
-<!-- Right Sidebar - Poll -->
-<aside class="sidebar sidebar-right">
-  <div class="sidebar-widget">
-    <h3 class="widget-title">2026 SEC Baseball Champion?</h3>
-    <div id="poll-container">
-      <div class="poll-options" id="poll-options">
-        <button class="poll-btn" onclick="submitVote('LSU')">LSU</button>
-        <button class="poll-btn" onclick="submitVote('Texas A&M')">Texas A&M</button>
-        <button class="poll-btn" onclick="submitVote('Tennessee')">Tennessee</button>
-        <button class="poll-btn" onclick="submitVote('Arkansas')">Arkansas</button>
-        <button class="poll-btn" onclick="submitVote('Vanderbilt')">Vanderbilt</button>
-        <button class="poll-btn" onclick="submitVote('Florida')">Florida</button>
-        <button class="poll-btn" onclick="submitVote('Ole Miss')">Ole Miss</button>
-        <button class="poll-btn" onclick="submitVote('Texas')">Texas</button>
-      </div>
-      <div class="poll-results" id="poll-results" style="display: none;">
-        <div class="results-list" id="results-list"></div>
-        <p class="total-votes" id="total-votes"></p>
-      </div>
-    </div>
-  </div>
-</aside>
-
+<!-- Center Content -->
+<main class="main-content">
 <div class="container">
   <div class="audio-wrapper">
     <button class="play-btn" id="playBtn" onclick="togglePlay()">
