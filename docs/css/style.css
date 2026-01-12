@@ -131,6 +131,12 @@ body {
     padding: 0;
     z-index: 100;
   }
+  
+  .main-content {
+    margin-left: 540px;
+    margin-right: auto;
+    max-width: 900px;
+  }
 }
 
 .schedule-header {
