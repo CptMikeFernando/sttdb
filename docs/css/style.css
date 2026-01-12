@@ -151,7 +151,7 @@ body {
   
   .schedule-sidebar {
     display: block;
-    position: fixed;
+    position: absolute;
     top: 175px;
     left: max(10px, calc((100vw - var(--content-width)) / 4 - var(--sidebar-width) / 2));
     width: var(--sidebar-width);
@@ -200,7 +200,7 @@ body {
 }
 
 .header-result {
-  text-align: right;
+  text-align: center;
 }
 
 .schedule-content {
@@ -241,7 +241,7 @@ body {
 }
 
 .schedule-result {
-  text-align: right;
+  text-align: center;
   font-size: 11px;
 }
 
