@@ -11,15 +11,18 @@ A static HTML/CSS/JS website featuring a tiger mascot with social media links an
     - `sports-ticker.js` - Live NCAA scores carousel (basketball, baseball, football)
     - `lsu-news.js` - LSU sports news from lsusports.net
     - `recruiting-news.js` - Recruiting news from LSU Tigers Wire RSS
+    - `lsu-schedule.js` - 2026 LSU Football schedule with auto-updating game results
   - `img/` - Images
   - `audio/` - Audio files
 
 ## Features
+- 2026 LSU Football Schedule sidebar (left side) with auto-updating W/L results
 - Live NCAA Division I sports scores carousel (SEC games)
 - Sports News and Recruiting tabs for news content
-- Custom audio player with "Neck" song
+- Custom audio player with "Neck" song labeled as "NECK"
 - Mobile-responsive design with separate layouts
 - Social media links
+- LSU tiger head favicon with purple background
 
 ## Running the Project
 The site is served using Python's built-in HTTP server on port 5000.
