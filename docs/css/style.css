@@ -171,24 +171,24 @@ body {
   }
   
   .layout-wrapper {
-    position: relative;
     display: block;
     max-width: var(--content-width);
     margin: 0 auto;
     padding: 0 0 1.5rem;
+    position: relative;
   }
   
   .schedule-sidebar {
     display: block;
     position: absolute;
     top: 0;
-    left: calc(-1 * ((100vw - var(--content-width)) / 2));
+    left: calc(-1 * var(--sidebar-width) - 20px);
     width: var(--sidebar-width);
   }
   
   .main-content {
     width: 100%;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
   }
   
