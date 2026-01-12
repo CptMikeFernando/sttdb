@@ -152,8 +152,8 @@ body {
   .schedule-sidebar {
     display: block;
     position: fixed;
-    top: 130px;
-    left: calc(((100vw - var(--content-width)) / 2 - var(--sidebar-width)) / 2);
+    top: 175px;
+    left: max(10px, calc((100vw - var(--content-width)) / 4 - var(--sidebar-width) / 2));
     width: var(--sidebar-width);
     background: rgba(45, 17, 80, 0.95);
     border-radius: 0.5rem;
