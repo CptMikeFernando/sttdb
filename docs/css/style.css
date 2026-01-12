@@ -192,7 +192,7 @@ body {
     display: block;
     position: absolute;
     top: calc(var(--header-offset) + 68px);
-    left: max(10px, calc((100% - var(--content-width) - var(--sidebar-width) * 2) / 4));
+    left: max(10px, calc(50% - var(--content-width)/2 - var(--sidebar-width) - 20px));
     width: var(--sidebar-width);
     padding: 0;
     z-index: 100;
