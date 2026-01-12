@@ -1,29 +1,17 @@
 const LSU_SCHEDULE_2026 = [
-  { date: '2026-08-29', opponent: 'at Clemson', time: 'TBD', espnId: null },
-  { date: '2026-09-05', opponent: 'Louisiana Tech', time: 'TBD', espnId: null },
-  { date: '2026-09-12', opponent: 'Florida', time: 'TBD', espnId: null },
-  { date: '2026-09-19', opponent: 'Southeastern LA', time: 'TBD', espnId: null },
-  { date: '2026-09-26', opponent: 'at Ole Miss', time: 'TBD', espnId: null },
-  { date: '2026-10-10', opponent: 'South Carolina', time: 'TBD', espnId: null },
-  { date: '2026-10-17', opponent: 'at Vanderbilt', time: 'TBD', espnId: null },
-  { date: '2026-10-24', opponent: 'Texas A&M', time: 'TBD', espnId: null },
-  { date: '2026-11-07', opponent: 'at Alabama', time: 'TBD', espnId: null },
-  { date: '2026-11-14', opponent: 'Arkansas', time: 'TBD', espnId: null },
-  { date: '2026-11-21', opponent: 'Western Kentucky', time: 'TBD', espnId: null },
-  { date: '2026-11-28', opponent: 'at Oklahoma', time: 'TBD', espnId: null }
+  { date: '2026-09-05', opponent: 'at Clemson', time: 'TBD' },
+  { date: '2026-09-12', opponent: 'Louisiana Tech', time: 'TBD' },
+  { date: '2026-09-19', opponent: 'Ole Miss', time: 'TBD' },
+  { date: '2026-09-26', opponent: 'Texas A&M', time: 'TBD' },
+  { date: '2026-10-03', opponent: 'McNeese', time: 'TBD' },
+  { date: '2026-10-10', opponent: 'at Kentucky', time: 'TBD' },
+  { date: '2026-10-17', opponent: 'Mississippi State', time: 'TBD' },
+  { date: '2026-10-24', opponent: 'at Auburn', time: 'TBD' },
+  { date: '2026-11-07', opponent: 'Alabama', time: 'TBD' },
+  { date: '2026-11-14', opponent: 'Texas', time: 'TBD' },
+  { date: '2026-11-21', opponent: 'at Tennessee', time: 'TBD' },
+  { date: '2026-11-28', opponent: 'Arkansas', time: 'TBD' }
 ];
-
-async function fetchLSUScheduleFromESPN() {
-  try {
-    const response = await fetch('https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/lsu/schedule?season=2026');
-    if (!response.ok) return null;
-    const data = await response.json();
-    return data;
-  } catch (e) {
-    console.log('Could not fetch ESPN schedule:', e);
-    return null;
-  }
-}
 
 async function fetchGameResult(gameDate) {
   try {
@@ -62,8 +50,6 @@ async function fetchGameResult(gameDate) {
 
 function formatDate(dateStr) {
   const date = new Date(dateStr + 'T12:00:00');
-  const months = ['Aug', 'Sep', 'Sep', 'Sep', 'Sep', 'Oct', 'Oct', 'Oct', 'Nov', 'Nov', 'Nov', 'Nov'];
-  const shortMonths = ['8/', '9/', '9/', '9/', '9/', '10/', '10/', '10/', '11/', '11/', '11/', '11/'];
   return `${date.getMonth() + 1}/${date.getDate()}`;
 }
 
