@@ -802,6 +802,10 @@ a.tombollink3:hover {
 }
 
 @media (max-width: 768px) {
+  .ad-banner-container {
+    display: none !important;
+  }
+  
   .main-nav {
     padding: 10px 15px;
     top: 0 !important;
