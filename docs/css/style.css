@@ -821,7 +821,7 @@ a.tombollink3:hover {
   }
   
   .layout-wrapper {
-    padding-top: 70px !important;
+    padding-top: 58px !important;
   }
   
   .news-tab {
@@ -937,7 +937,7 @@ a.tombollink3:hover {
   }
   
   .main-content {
-    padding-top: 60px;
+    padding-top: 0 !important;
   }
   
   .container {
