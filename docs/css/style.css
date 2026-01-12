@@ -179,7 +179,6 @@ body {
     margin: 0 auto;
     padding-top: calc(var(--header-offset) + 110px);
     padding-bottom: 1.5rem;
-    position: relative;
   }
   
   .top-spacer + .layout-wrapper {
@@ -190,8 +189,8 @@ body {
   .schedule-sidebar {
     display: block;
     position: absolute;
-    top: 0;
-    left: calc(-1 * (var(--sidebar-width) + var(--desktop-gap)));
+    top: calc(var(--header-offset) + 108px);
+    left: max(10px, calc((100vw - var(--content-width) - var(--sidebar-width) * 2) / 4));
     width: var(--sidebar-width);
     padding: 0;
     z-index: 100;
