@@ -124,7 +124,7 @@ body {
     position: absolute;
     left: 20px;
     top: 175px;
-    width: 280px;
+    width: 220px;
     background: rgba(45, 17, 80, 0.95);
     border-radius: 8px;
     border: 1px solid rgba(253, 208, 35, 0.3);
@@ -137,9 +137,9 @@ body {
   background: #2d1150;
   color: #FDD023;
   font-family: 'Poppins', Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
-  padding: 6px 8px;
+  padding: 10px 12px;
   text-align: center;
   border-bottom: 2px solid #FDD023;
   border-radius: 8px 8px 0 0;
@@ -147,17 +147,17 @@ body {
 
 .schedule-table-header {
   display: flex;
-  padding: 3px 8px;
+  padding: 6px 12px;
   background: rgba(70, 29, 124, 0.8);
   border-bottom: 1px solid rgba(253, 208, 35, 0.2);
   font-family: 'Poppins', Arial, sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   color: #FDD023;
 }
 
 .header-date {
-  width: 40px;
+  width: 65px;
 }
 
 .header-opponent {
@@ -165,7 +165,7 @@ body {
 }
 
 .header-result {
-  width: 70px;
+  width: 55px;
   text-align: right;
 }
 
@@ -177,13 +177,13 @@ body {
 .schedule-row {
   display: flex;
   align-items: center;
-  padding: 3px 8px;
+  padding: 8px 12px;
   border-bottom: 1px solid rgba(253, 208, 35, 0.1);
   font-family: 'Poppins', Arial, sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   color: #ffffff;
   transition: background 0.2s;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .schedule-row:hover {
@@ -195,22 +195,22 @@ body {
 }
 
 .schedule-date {
-  width: 40px;
+  width: 65px;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 10px;
+  font-size: 11px;
   white-space: nowrap;
 }
 
 .schedule-opponent {
   flex: 1;
   font-weight: 500;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .schedule-result {
-  width: 50px;
+  width: 55px;
   text-align: right;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .result-letter {
