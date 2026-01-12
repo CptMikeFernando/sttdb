@@ -174,11 +174,15 @@ body {
   }
   
   .layout-wrapper {
-    display: block;
-    max-width: var(--content-width);
+    display: grid;
+    grid-template-columns: var(--sidebar-width) var(--content-width);
+    gap: 30px;
+    max-width: calc(var(--sidebar-width) + var(--content-width) + 30px);
     margin: 0 auto;
     padding-top: calc(var(--header-offset) + 110px);
     padding-bottom: 1.5rem;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   
   .top-spacer + .layout-wrapper {
@@ -188,9 +192,7 @@ body {
   
   .schedule-sidebar {
     display: block;
-    position: absolute;
-    top: calc(var(--header-offset) + 108px);
-    left: max(10px, calc((100vw - var(--content-width) - var(--sidebar-width) * 2) / 4));
+    position: static;
     width: var(--sidebar-width);
     padding: 0;
     z-index: 100;
@@ -217,7 +219,6 @@ body {
   .main-content {
     width: 100%;
     max-width: var(--content-width);
-    margin: 0 auto;
   }
 }
 
