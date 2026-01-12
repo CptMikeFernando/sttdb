@@ -49,7 +49,13 @@ async function fetchAllNews() {
   
   combined.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
   
-  return combined.slice(0, 30);
+  const threeDaysAgo = new Date();
+  threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+  threeDaysAgo.setHours(0, 0, 0, 0);
+  
+  const filtered = combined.filter(article => new Date(article.pubDate) >= threeDaysAgo);
+  
+  return filtered.slice(0, 30);
 }
 
 function formatDate(dateString) {

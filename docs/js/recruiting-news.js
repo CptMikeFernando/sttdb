@@ -97,7 +97,15 @@ function fetchRecruitingNews() {
       return recruitingKeywords.some(function(kw) { return text.indexOf(kw) !== -1; });
     });
 
-    var articles = recruitingArticles.length > 0 ? recruitingArticles.slice(0, 25) : allArticles.slice(0, 25);
+    var threeDaysAgo = new Date();
+    threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+    threeDaysAgo.setHours(0, 0, 0, 0);
+    
+    var recentArticles = (recruitingArticles.length > 0 ? recruitingArticles : allArticles).filter(function(article) {
+      return new Date(article.pubDate) >= threeDaysAgo;
+    });
+
+    var articles = recentArticles.slice(0, 25);
     var html = '';
     
     articles.forEach(function(article) {
