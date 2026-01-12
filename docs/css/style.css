@@ -162,7 +162,7 @@ body {
 
 @media (min-width: 1100px) {
   .ad-banner-container {
-    padding: 10px 15px 15px;
+    padding: 10px 15px 5px;
   }
   
   .ad-banner-slot {
@@ -173,13 +173,13 @@ body {
     display: block;
     max-width: var(--content-width);
     margin: 0 auto;
-    padding: 5px 0 1.5rem;
+    padding: 0 0 1.5rem;
   }
   
   .schedule-sidebar {
     display: block;
     position: fixed;
-    top: calc(var(--header-offset) + 100px);
+    top: calc(var(--header-offset) + 95px);
     left: max(10px, calc((100vw - var(--content-width)) / 4 - var(--sidebar-width) / 2));
     width: var(--sidebar-width);
     padding: 0;
