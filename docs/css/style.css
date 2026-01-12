@@ -890,7 +890,47 @@ a.tombollink3:hover {
   margin-top: 10px;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1500px) and (min-width: 769px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+  }
+  
+  .sidebar-left {
+    order: -1;
+  }
+  
+  .sidebar-right {
+    order: 1;
+  }
+  
+  .schedule-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-height: none;
+  }
+  
+  .schedule-item {
+    flex: 1 1 calc(33% - 10px);
+    min-width: 150px;
+  }
+  
+  .poll-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .poll-btn {
+    flex: 1 1 calc(25% - 8px);
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 768px) {
   .sidebar {
     display: none;
   }
