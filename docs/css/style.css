@@ -3,7 +3,6 @@
   --ticker-height: 32px;
   --nav-height: 48px;
   --header-offset: calc(var(--ticker-height) + var(--nav-height) + 10px);
-  --content-top: calc(var(--header-offset) + 110px);
   --content-width: 700px;
   --sidebar-width: 290px;
   --desktop-gap: 1.5rem;
@@ -138,7 +137,7 @@ body {
   max-width: 970px;
   margin: 0 auto;
   margin-top: var(--header-offset);
-  padding: 10px 15px 15px;
+  padding: 10px 15px 20px;
   text-align: center;
 }
 
@@ -163,7 +162,7 @@ body {
 
 @media (min-width: 1100px) {
   .ad-banner-container {
-    padding: 0 15px 10px;
+    padding: 10px 15px 15px;
   }
   
   .ad-banner-slot {
@@ -174,27 +173,22 @@ body {
     display: block;
     max-width: var(--content-width);
     margin: 0 auto;
-    padding: 0 0 1.5rem;
-    position: relative;
+    padding: 5px 0 1.5rem;
   }
   
   .schedule-sidebar {
     display: block;
-    position: absolute;
-    top: 0;
-    left: calc(-1 * ((100vw - var(--content-width)) / 4 + var(--sidebar-width) / 2));
+    position: fixed;
+    top: calc(var(--header-offset) + 100px);
+    left: max(10px, calc((100vw - var(--content-width)) / 4 - var(--sidebar-width) / 2));
     width: var(--sidebar-width);
-  }
-  
-  .main-content {
-    width: 100%;
-    margin: 0;
     padding: 0;
+    z-index: 100;
   }
   
   .news-section {
-    margin-top: 0;
     padding-top: 0;
+    margin-top: 0;
   }
   
   .schedule-box {
@@ -208,6 +202,12 @@ body {
   
   .schedule-box:last-child {
     margin-bottom: 0;
+  }
+  
+  .main-content {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
   }
 }
 
