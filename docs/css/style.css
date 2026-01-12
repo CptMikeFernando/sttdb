@@ -190,7 +190,7 @@ body {
     display: block;
     position: absolute;
     top: calc(var(--header-offset) + 108px);
-    left: max(15px, calc((100vw - var(--content-width)) / 4 - var(--sidebar-width) / 2));
+    left: max(10px, calc((100vw - var(--content-width) - var(--sidebar-width) * 2) / 4));
     width: var(--sidebar-width);
     padding: 0;
     z-index: 100;
@@ -813,12 +813,15 @@ a.tombollink3:hover {
 }
 
 @media (max-width: 768px) {
-  .ad-banner-container {
+  .ad-banner-container,
+  .top-spacer {
     display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
   .layout-wrapper {
-    padding-top: 0;
+    padding-top: 70px !important;
   }
   
   .news-tab {
