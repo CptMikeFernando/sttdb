@@ -144,21 +144,20 @@ body {
 @media (min-width: 1450px) {
   .layout-wrapper {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) var(--sidebar-width) var(--desktop-gap) var(--content-width) minmax(0, 1fr);
-    column-gap: 0;
-    max-width: 100%;
-    padding: 100px 0 1.5rem 0;
-    margin: 0;
+    grid-template-columns: var(--sidebar-width) var(--content-width);
+    column-gap: var(--desktop-gap);
+    width: min(100%, calc(var(--sidebar-width) + var(--desktop-gap) + var(--content-width)));
+    margin: 0 auto;
+    padding: 100px 0 1.5rem;
   }
   
   .schedule-sidebar {
     display: block;
-    grid-column: 2;
-    grid-row: 1;
+    grid-column: 1;
     position: sticky;
     top: 100px;
     align-self: start;
-    width: 100%;
+    width: var(--sidebar-width);
     background: rgba(45, 17, 80, 0.95);
     border-radius: 0.5rem;
     border: 1px solid rgba(253, 208, 35, 0.3);
@@ -168,7 +167,7 @@ body {
   }
   
   .main-content {
-    grid-column: 4;
+    grid-column: 2;
     width: 100%;
     max-width: var(--content-width);
     margin: 0;
