@@ -97,7 +97,7 @@ function fetchRecruitingNews() {
       return recruitingKeywords.some(function(kw) { return text.indexOf(kw) !== -1; });
     });
 
-    var articles = recruitingArticles.length > 0 ? recruitingArticles.slice(0, 10) : allArticles.slice(0, 10);
+    var articles = recruitingArticles.length > 0 ? recruitingArticles.slice(0, 25) : allArticles.slice(0, 25);
     var html = '';
     
     articles.forEach(function(article) {

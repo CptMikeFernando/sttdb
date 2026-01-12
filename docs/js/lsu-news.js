@@ -49,7 +49,7 @@ async function fetchAllNews() {
   
   combined.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
   
-  return combined.slice(0, 15);
+  return combined.slice(0, 30);
 }
 
 function formatDate(dateString) {
