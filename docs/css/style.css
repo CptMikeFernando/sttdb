@@ -191,7 +191,7 @@ body {
   .schedule-sidebar {
     display: block;
     position: absolute;
-    top: calc(var(--header-offset) + 108px);
+    top: calc(var(--header-offset) + 68px);
     left: max(10px, calc((100% - var(--content-width) - var(--sidebar-width) * 2) / 4));
     width: var(--sidebar-width);
     padding: 0;
