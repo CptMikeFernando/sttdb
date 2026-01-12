@@ -890,7 +890,7 @@ a.tombollink3:hover {
   margin-top: 10px;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1500px) {
   .sidebar {
     display: none;
   }
