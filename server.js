@@ -23,6 +23,9 @@ app.post('/api/daily-dump', async (req, res) => {
   try {
     const { articles } = req.body;
     
+    console.log('Daily Dump API called with', articles?.length || 0, 'articles');
+    console.log('OpenAI configured:', !!process.env.AI_INTEGRATIONS_OPENAI_API_KEY);
+    
     if (!articles || !Array.isArray(articles) || articles.length === 0) {
       return res.status(400).json({ error: 'No articles provided' });
     }
@@ -51,8 +54,9 @@ app.post('/api/daily-dump', async (req, res) => {
     
     res.json({ summary, generatedAt: new Date().toISOString() });
   } catch (error) {
-    console.error('Error generating daily dump:', error);
-    res.status(500).json({ error: 'Failed to generate summary' });
+    console.error('Error generating daily dump:', error.message);
+    console.error('Full error:', error);
+    res.status(500).json({ error: 'Failed to generate summary: ' + error.message });
   }
 });
 
