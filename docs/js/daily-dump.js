@@ -66,11 +66,11 @@ async function loadDailyDump() {
       body: JSON.stringify({ articles })
     });
 
-    if (!response.ok) {
-      throw new Error('Failed to generate summary');
-    }
-
     const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.error || 'Failed to generate summary');
+    }
     dailyDumpCache = data.summary;
     dailyDumpLoaded = true;
 
