@@ -120,12 +120,19 @@ function refreshDailyDump() {
   loadDailyDump();
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+function initDailyDump() {
   document.querySelectorAll('.news-tab').forEach(function(tab) {
     tab.addEventListener('click', function() {
       if (this.getAttribute('data-tab') === 'dailydump' && !dailyDumpLoaded) {
+        console.log('Daily Dump tab clicked, loading...');
         loadDailyDump();
       }
     });
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initDailyDump);
+} else {
+  initDailyDump();
+}
