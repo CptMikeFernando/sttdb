@@ -83,11 +83,15 @@ function extractImageFromContent(content) {
   return null;
 }
 
-function createNewsCard(article) {
+function createNewsCard(article, index) {
   var imageUrl = article.thumbnail || 
                  (article.enclosure && article.enclosure.link) || 
                  extractImageFromContent(article.content) || 
                  extractImageFromContent(article.description);
+  
+  if (article.title && article.title.toLowerCase().includes('leavitt')) {
+    imageUrl = 'img/sam-leavitt.png';
+  }
   
   console.log('Sports article:', article.title.substring(0, 30), 'Image:', imageUrl ? 'YES' : 'NO', imageUrl ? imageUrl.substring(0, 50) : '');
   
@@ -120,7 +124,7 @@ async function loadLSUNews() {
     return;
   }
   
-  newsContainer.innerHTML = news.map(createNewsCard).join('');
+  newsContainer.innerHTML = news.map((article, index) => createNewsCard(article, index)).join('');
   console.log('Sports news loaded:', news.length, 'articles');
 }
 
