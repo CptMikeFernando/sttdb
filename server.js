@@ -60,7 +60,7 @@ app.post('/api/daily-dump', async (req, res) => {
   }
 });
 
-app.get('/{*splat}', (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'docs', 'index.html'));
 });
 
