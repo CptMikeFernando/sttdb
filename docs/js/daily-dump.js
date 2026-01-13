@@ -94,9 +94,9 @@ async function loadDailyDump() {
       </button>
     `;
   } catch (error) {
-    console.error('Error loading daily dump:', error);
+    console.error('Error loading daily dump:', error.message, error);
     container.innerHTML = `
-      <p class="loading-text">Unable to generate Daily Dump at this time.</p>
+      <p class="loading-text">Unable to generate Daily Dump at this time. (${error.message})</p>
       <button class="dailydump-refresh" onclick="refreshDailyDump()">Try Again</button>
     `;
   }
