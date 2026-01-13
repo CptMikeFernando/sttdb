@@ -93,6 +93,10 @@ function createNewsCard(article, index) {
     imageUrl = 'img/sam-leavitt.png';
   }
   
+  if (article.title && article.title.toLowerCase().includes('softball america')) {
+    imageUrl = 'img/softball-america-top100.png';
+  }
+  
   console.log('Sports article:', article.title.substring(0, 30), 'Image:', imageUrl ? 'YES' : 'NO', imageUrl ? imageUrl.substring(0, 50) : '');
   
   var imageHtml = '';
