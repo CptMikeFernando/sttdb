@@ -699,6 +699,81 @@ a.tombollink3:hover {
   gap: 20px;
 }
 
+.dailydump-container {
+  display: block;
+}
+
+.dailydump-content {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 25px 30px;
+  text-align: left;
+  border: 1px solid rgba(253, 208, 35, 0.3);
+}
+
+.dailydump-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(253, 208, 35, 0.2);
+}
+
+.dailydump-header h2 {
+  color: #FDD023;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.dailydump-time {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+}
+
+.dailydump-body {
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.dailydump-body p {
+  margin-bottom: 15px;
+}
+
+.dailydump-body h3 {
+  color: #FDD023;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 25px 0 10px 0;
+}
+
+.dailydump-body strong {
+  color: #FDD023;
+}
+
+.dailydump-refresh {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #FDD023;
+  color: #461D7C;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dailydump-refresh:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(253, 208, 35, 0.4);
+}
+
 .news-card {
   display: block;
   background: rgba(255, 255, 255, 0.1);
